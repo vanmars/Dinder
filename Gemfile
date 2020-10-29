@@ -43,13 +43,14 @@ gem 'devise'
 gem 'kaminari'
 gem "cancancan", "~> 3.1"
 gem 'warden'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
-  gem 'ffaker'
+  gem 'dotenv-rails'
 end
 
 group :development do
