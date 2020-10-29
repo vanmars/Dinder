@@ -44,6 +44,7 @@ gem 'kaminari'
 gem "cancancan", "~> 3.1"
 gem 'warden'
 gem 'httparty'
+gem 'hammerjs_rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
