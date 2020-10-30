@@ -1,0 +1,16 @@
+
+<div class="jumbotron">
+  <%= image_tag('dinder_logo.png', class: 'logo') %>
+  <p> Dining with Friends | Make Decisions & Get Food </p>
+  <p> 
+    <%= link_to "Login", new_user_session_path, :class => 'homepage-link'%> |
+    <%= link_to "Sign up", new_user_registration_path, :class => 'homepage-link'%> 
+  </p>
+</div>
+
+<% if @user %>
+  <div class="profile-section">
+    <h1 id="welcome-user">Are y'hungry, <%= @user.name? %></h1>
+    
+  </div>
+<% end %>

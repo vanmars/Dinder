@@ -1,0 +1,31 @@
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+body {
+  background-color: #344055;
+}
+
+ .jumbotron {
+   text-align: center;
+   background-color: #344055;
+ }
+
+ .logo {
+  width: 50%;
+  height: auto
+ }
+
+ p {
+   font-family: 'Montserrat';
+   font-weight: 900;
+   text-al3ign: center;
+   color: #E3F0F3;
+ }
+
+ a {
+  color: #FB6376
+ }
+
+ a :hover {
+   color:#E3F0F3
+ }
