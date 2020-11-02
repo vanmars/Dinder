@@ -1,11 +1,18 @@
 <div>
 
   <h1 class="text-white display-4">Profile Page</h1>
-  <hr>
+  <hr>  
   <div class='card card-shadow p-4'>
+
+    <div class="avatar">
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar %>
+  <% end %>
+    </div>
+
     <p class="lead text-dark">Name: <%= @user.name %></p>
     <p class="lead text-dark">Email: <%= @user.email %></p>
-    <%= link_to 'Edit Password', edit_user_password_path(@user), class: "lead" %>
+    <%= link_to 'Edit Password', edit_user_registration_path(@user), class: "lead" %>
   </div>
 
 </div>
