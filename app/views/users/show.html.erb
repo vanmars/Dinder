@@ -1,4 +1,9 @@
-<div>
+<h1 class="text-white display-4">Profile Page</h1>
+<hr>
+<div class='card card-shadow p-4'>
+  <p class="lead text-dark">Name: <%= @user.name%></p>
+  <p class="lead text-dark">Email: <%= @user.email%></p>
+  <%= link_to 'Edit Password', edit_user_password_path(@user), class: "lead" %>
 
   <h1 class="text-white display-4">Profile Page</h1>
   <hr>  
@@ -15,5 +20,27 @@
     <p class="lead text-dark">Email: <%= @user.email %></p>
     <%= link_to 'Edit Profile', edit_user_registration_path(@user), class: "lead" %>
   </div>
+  <%# Add Friend Button %>
+  <% if @user.id != current_user.id %>
+
+    <% are_friends = false %>
+    <% current_user.friends.each do | friend | %>
+      <% if friend.id == @user.id %>
+        <% are_friends = true %>
+      <% end%>
+    <% end %>
+
+    <% already_requested = false%>
+    <% if @user.friend_requests.include?(current_user) %>
+      <% already_requested = true %>
+    <% end %>
+
+    <% if are_friends == false && already_requested == false %>
+      <form>
+        <input id="add_friend" name="add_friend" type="hidden">
+        <button class="btn btn-light" style="background-color:#A8D0DB; color:#FB6376" type="submit">Add Friend</button>
+      </form>
+    <% end %>
+  <% end %>
 
 </div>
