@@ -1,0 +1,6 @@
+Color Palettes
+
+Fiery Rose - #FB6376
+Azure - #E3F0F3
+Charcoal - #344055
+Light Blue - #A8D0DB
