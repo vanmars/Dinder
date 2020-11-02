@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :avatar       
 
   has_and_belongs_to_many :friends,
                           class_name: "User",
@@ -20,7 +21,5 @@ class User < ApplicationRecord
 
   scope :friend_search, -> (friend_parameter) { where("name ilike ?", "%#{friend_parameter}%") }
 
-  def friend_request(user)
 
-  end
 end
