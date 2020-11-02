@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users, only: [:show, :friends]
+  resources :restaurants
   
   get 'restaurants/explore', to: 'restaurants#explore', as: 'explore'
   get 'users/:id/friends', to: 'users#friends', as: 'friends'
