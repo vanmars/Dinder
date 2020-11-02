@@ -1,0 +1,9 @@
+
+
+<% if @restaurant.get_nearby_restaurants.any? %>
+  <ul>
+    <% @restaurant.get_nearby_restaurants.each do |restaurant| %>
+    <li><%= restaurant['restaurant']['name'] %></li>
+    <% end %>
+  </ul>
+<% end %>

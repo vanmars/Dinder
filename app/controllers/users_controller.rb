@@ -15,6 +15,11 @@ class UsersController < ApplicationController
     render :show
   end
 
+  def edit
+    @user = current_user
+    render :edit
+  end   
+
   def friends
     @user = User.find(params[:id])
     if params[:friend_search]
