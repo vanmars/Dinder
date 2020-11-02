@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'user/index'
-  get 'user/show'
+  root to: 'home#index'
+  
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-root to: 'home#index'
-  resources :restaurants
+  resources :users, only: [:show, :friends]
+  
+  get 'restaurants/explore', to: 'restaurants#explore', as: 'explore'
+  get 'users/:id/friends', to: 'users#friends', as: 'friends'
 end
