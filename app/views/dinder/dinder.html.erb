@@ -1,0 +1,13 @@
+<% if @restaurant.get_nearby_restaurants.any? %>
+  
+  <% @restaurants.each do | restaurant | %>
+    <div class="card"> 
+      <%= image_tag(restaurant['restaurant']['featured_image'], class: 'card-img-top')%>
+      <div class="card-body">
+        <h5 class="card-title"> <%= restaurant['restaurant']['name'] %> </h5>
+        <p class="card-text"> <%= restaurant['restaurant']['location']['address'] %> </p>
+        
+      </div>
+    </div>
+  <% end %>
+<% end %>
