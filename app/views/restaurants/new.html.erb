@@ -1,8 +1,21 @@
 <p>Choose a city for your Dinder yo</p>
-<%# <%= select_tag(:city_id, options_for_select([['Portland', 286], ['Seattle', 279], ['Beaverton', 10614] ['Spokane', 1240]])) %> 
-<select name="city_id id="city_id">
-  <option value="286">Portland</option>
-  <option value="279">Seattle</option>
-  <option value="286">Beaverton</option>
-  <option value="286">Spokane</option>
-</select>
+
+<form action = '/restaurants' method='get'>
+  <select name="city" id="city">
+    <option value=286>Portland</option>
+    <option value=279>Seattle</option>
+    <option value=10614>Beaverton</option>
+    <option value=1240>Spokane</option>
+  </select>
+  <%= submit_tag 'Submit'%>
+</form>
+
+<% if @restaurants %>
+  <% if @restaurants.any? %>
+   <ul>
+      <% @restaurants.each do |restaurant| %>
+      <li><%= restaurant['restaurant']['name'] %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %> 
