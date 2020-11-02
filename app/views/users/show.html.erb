@@ -5,21 +5,27 @@
   <p class="lead text-dark">Email: <%= @user.email%></p>
   <%= link_to 'Edit Password', edit_user_password_path(@user), class: "lead" %>
 
+  <%# Add Friend Button %>
   <% if @user.id != current_user.id %>
+
     <% are_friends = false %>
     <% current_user.friends.each do | friend | %>
       <% if friend.id == @user.id %>
         <% are_friends = true %>
       <% end%>
     <% end %>
-    <% if are_friends == false %>
+
+    <% already_requested = false%>
+    <% if @user.friend_requests.include?(current_user) %>
+      <% already_requested = true %>
+    <% end %>
+
+    <% if are_friends == false && already_requested == false %>
       <form>
-          <input id="add_friend" name="add_friend" type="hidden">
-          <button class="btn btn-light" style="background-color:#A8D0DB; color:#FB6376" type="submit">Add Friend</button>
+        <input id="add_friend" name="add_friend" type="hidden">
+        <button class="btn btn-light" style="background-color:#A8D0DB; color:#FB6376" type="submit">Add Friend</button>
       </form>
     <% end %>
   <% end %>
 
 </div>
-
-

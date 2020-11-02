@@ -11,7 +11,16 @@ class User < ApplicationRecord
                           foreign_key: :user_id,
                           association_foreign_key: :friend_user_id
 
+  has_and_belongs_to_many :friend_requests,
+                          class_name: "User",
+                          join_table: :friend_requests,
+                          foreign_key: :user_id,
+                          association_foreign_key: :friend_user_id
+
 
   scope :friend_search, -> (friend_parameter) { where("name ilike ?", "%#{friend_parameter}%") }
 
+  def friend_request(user)
+
+  end
 end

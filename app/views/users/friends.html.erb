@@ -1,30 +1,29 @@
 <h1 class='display-4 text-white'>Your Friends</h1>
 <hr>
-
 <div class="row w-100">
-
-  <div class="col-sm-6">
+  <%#  Friends List Card %>
+  <div class="col-sm">
     <div class="card p-4" style="background-color: #A8D0DB">
       <h4 class="lead">My Friends<h4>
       <% if @user.friends.any? %>
         <% @user.friends. each do | friend |%>
-          <%= link_to friend.name, user_path(friend) %>
+          <li><%= link_to friend.name, user_path(friend) %></li>
         <% end %>
       <% else %>
         <p class="text-dark">There are no friends currently listed.</p>
       <% end %>
     </div>
   </div>
-  <div class="col-sm-6">
+  <%# Add Friends Search Card %>
+  <div class="col-sm">
     <div class="card p-4" style="background-color: #A8D0DB">
       <h4 class="lead">Add Friends<h4>
-
        <form class="form-inline my-2 my-lg-0">
         <input id="friend_search" name="friend_search" class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search">
         <button class="btn btn-dark my-2 my-sm-0" style="color:#FB6376" type="submit">Search</button>
       </form>
-
       <br>
+      <%# Search Results %>
       <% if @friends %>
         <% if @friends.any?%>
           <% @friends.each do  | friend |%>
@@ -36,4 +35,21 @@
       <% end%>
     </div>
   </div>
+  <%# Friend Requests %>
+  <div class="col-sm">
+    <div class="card p-4" style="background-color: #A8D0DB">
+      <h4 class="lead">Friend Requests<h4>
+      <br>
+      <%# Pending Friends %>
+      <% if @user.friend_requests.any? %>
+        <% @user.friend_requests.each do | friend |%>
+          <%= link_to friend.name, user_path(friend) %>
+          <% end %>
+      <% else %>
+        <p class="text-dark">There are no pending friend requests.</p>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+  
