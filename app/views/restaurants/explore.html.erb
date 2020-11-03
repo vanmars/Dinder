@@ -1,6 +1,56 @@
-<h1 class='display-4 text-white'>Explore Restaurants</h1>
-<hr>
-<%# Search Bar for Restaurants by Name %>
-<%# Search Bar for Restaurants by Cuisine %>
-<%# Collections for the City  %>
+<div class="explore_page">
+  <div class="nav">
+    <h1 class='display-1' style="color: #344055"><b>Explore Restaurants</b></h1>
+    <%# Search Bar %>
+    <div class="ml-auto">
+      <form class="form-inline my-2 my-lg-0">
+        <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Restaurant Name" aria-label="Search">
+        <button class="btn my-2 my-sm-0" style="background-color:#A8D0DB; color:#344055" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <%# Results for Cuisine by City %>
+  <div class="card shadow-lg p-4" style="background-color:#A8D0DB; color: #FB6376">
+    <h6 class=" display-4">Cuisines for <%= current_user.city.titleize %></h6>
+    <hr>
+    <% if @cuisines.any? %>
+      <p class="lead text-dark text-left"><%= @cuisines.join(", ") %></p>
+    <% else %>
+      <p class="lead text-dark text-left">There are no cuisines for this city.</p>
+    <% end %>
+    <br>
+  </div>
 
+  <%# Results for Restaurants by Name %>
+  <h6 class="display-3 text-white">Trending This Week</h6>
+  <hr>
+  <% if @restaurants.any? %>
+    <div class="row row-cols-1 row-cols-md-3">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col mb-4">
+        <div class="card shadow-lg">
+          <% if restaurant['restaurant']['featured_image'] != "" %>
+            <img src= <% restaurant['restaurant']['featured_image'] %> class="card-img-top">
+          <% end %>
+          <div class="card-body">
+            <h4 class="card-title"><%= restaurant['restaurant']['name'] %></h4>
+            <h6 class="card-text text-dark text-left"><%= restaurant['restaurant']['cuisines'] %></h6>
+            <h6 class="card-text text-dark text-left">Rating: <%= restaurant['restaurant']['user_rating']['aggregate_rating'] %></h6>
+            <h6 class="card-text text-dark text-left">Avg. Cost for Two: $<%= restaurant['restaurant']['average_cost_for_two'] %></h6>
+            <%= link_to "Menu", restaurant['restaurant']['menu_url'] %>
+            <hr>
+            <h6 class="card-text text-dark text-left">HOURS: <%= restaurant['restaurant']['timings'] %></h6>
+            <div class="card-footer" style="background-color: #A8D0DB">
+              <h6 class="card-text text-dark text-left">ADDRESS: <%= restaurant['restaurant']['location']['address'] %></h6>
+              <h6 class="card-text text-dark text-left"><%= restaurant['restaurant']['phone_numbers'] %></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-white text-left">There are no restaurants trending at this time.</p>
+  <% end %>
+</div>
