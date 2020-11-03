@@ -1,0 +1,8 @@
+<h1>Message</h1>
+<hr>
+<div class="card card-shadow p-4">
+<h4 class = 'lead text-dark'>From: <%= @message.sender.name %></h4>
+<hr>
+<h4 class = 'lead text-dark'>Body :<%= @message.body %></h4>
+<%= link_to 'Reply', new_message_path,  class: 'btn btn-danger'%>
+</div>
