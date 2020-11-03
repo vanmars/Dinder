@@ -1,9 +1,10 @@
 
 $(function(){
   
-  var $activeCard = $('#card_group .card:first-child');
+  var $activeCard = $('#card_group .dinder_card:first-child');
 
   $activeCard.addClass('showing');
+ 
   
   $('#decline').on('click', function() {
     console.log('decline')
@@ -17,7 +18,8 @@ $(function(){
     
   function goToCard(action) {
     $activeCard.removeClass("showing")
-    $activeCard = $activeCard.next(".card")
+    $activeCard = $activeCard.next(".dinder_card")
+   
 
     //send data to controller
     if(action == "accept"){
@@ -27,7 +29,6 @@ $(function(){
     }
     
     $activeCard.addClass("showing")
-
   }
 });
 
