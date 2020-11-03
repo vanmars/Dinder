@@ -1,4 +1,4 @@
-<p>Choose a city & a friend for your Dinder yo</p>
+<p>Choose a city & a friend for your Dinder, yo</p>
 <form action = '/dinders/dinder' method='get'>
   <select name="city" id="city">
     <option value=286>Portland</option>
@@ -6,12 +6,17 @@
     <option value=10614>Beaverton</option>
     <option value=1240>Spokane</option>
   </select>
+  <br>
 
-  <select name="friend" id="friend">
-  <% current_user.friends.each do |friend| %>
-    <option value=<% friend.id %>><%= friend.name %></option>
-  <% end %>
-  </select>
+  
+  <% User.all.each do |friend| %>
+  <input type="checkbox" name="user_ids[]" id="user_ids_" value=<%= friend.id %> />
+  <%= friend.name %><br>
+  <% end %> 
 
-  <%= submit_tag 'Submit'%>
+
+
+
+  <%= submit_tag 'Submit' %>
 </form>
+
