@@ -1,0 +1,16 @@
+
+<%= form_for :message, url: messages_path do |f| %>
+  <%= f.text_area :body, id: 'url', placeholder: "message", class: "message_body" %>
+  
+    <ul>
+    <% @recipients.each do |user| %>
+      <li>
+      <%= check_box_tag 'message[user_ids][]', user.id %>
+      <%= user.name %>
+      </li>
+    <% end %>
+    </ul>
+
+  <%= f.submit %>
+<% end %>
+

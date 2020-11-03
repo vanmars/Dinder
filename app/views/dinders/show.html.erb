@@ -1,12 +1,16 @@
+
+
 <% if @restaurant.get_nearby_restaurants.any? %>
-  
   <% @restaurants.each do | restaurant | %>
     <div class="card"> 
       <%= image_tag(restaurant['restaurant']['featured_image'], class: 'card-img-top')%>
       <div class="card-body">
         <h5 class="card-title"> <%= restaurant['restaurant']['name'] %> </h5>
         <p class="card-text"> <%= restaurant['restaurant']['location']['address'] %> </p>
-        
+        <div class="like_buttons">
+           <span class="controls" id="decline"><i class="far fa-times-circle fa-5x"></i></span>
+          <span class="controls" id="accept"><i class="fas fa-check-circle fa-5x"></i></span>
+        </div>
       </div>
     </div>
   <% end %>

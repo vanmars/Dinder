@@ -1,0 +1,17 @@
+
+<h1>Hello</h1>
+
+<%= form_for @message do |f| %>
+  <%= f.text_area :body %>
+  
+    <ul>
+    <% @recipients.each do |user| %>
+      <li>
+      <%= check_box_tag 'message[user_ids][]', user.id %>
+      <%= user.name %>
+      </li>
+    <% end %>
+    </ul>
+
+  <%= f.submit %>
+<% end %>
