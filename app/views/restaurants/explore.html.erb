@@ -22,35 +22,43 @@
     <br>
   </div>
 
-  <%# Results for Restaurants by Name %>
-  <h6 class="display-3 text-white">Trending This Week</h6>
-  <hr>
-  <% if @restaurants.any? %>
-    <div class="row row-cols-1 row-cols-md-3">
-    <% @restaurants.each do |restaurant| %>
-      <div class="col mb-4">
-        <div class="card shadow-lg">
-          <% if restaurant['restaurant']['featured_image'] != "" %>
-            <img src= <% restaurant['restaurant']['featured_image'] %> class="card-img-top">
-          <% end %>
-          <div class="card-body">
-            <h4 class="card-title"><%= restaurant['restaurant']['name'] %></h4>
-            <h6 class="card-text text-dark text-left"><%= restaurant['restaurant']['cuisines'] %></h6>
-            <h6 class="card-text text-dark text-left">Rating: <%= restaurant['restaurant']['user_rating']['aggregate_rating'] %></h6>
-            <h6 class="card-text text-dark text-left">Avg. Cost for Two: $<%= restaurant['restaurant']['average_cost_for_two'] %></h6>
-            <%= link_to "Menu", restaurant['restaurant']['menu_url'] %>
-            <hr>
-            <h6 class="card-text text-dark text-left">HOURS: <%= restaurant['restaurant']['timings'] %></h6>
-            <div class="card-footer" style="background-color: #A8D0DB">
-              <h6 class="card-text text-dark text-left">ADDRESS: <%= restaurant['restaurant']['location']['address'] %></h6>
-              <h6 class="card-text text-dark text-left"><%= restaurant['restaurant']['phone_numbers'] %></h6>
-            </div>
+  <%# Results for Restaurants by Trending this Week %>
+  <div class="trending">
+    <div class="explore_wrapper">
+      <h1 class="trending_title text-white display-3">Trending This Week</h1>
+      <% if @restaurants.any? %>
+          <div class="explore_cols">
+            <% @restaurants.each do |restaurant| %>
+              <div class="explore_col" ontouchstart="this.classList.toggle('hover');">
+                <div class="explore_container">
+                  <% if restaurant['restaurant']['featured_image'] != "" %>
+                    <div class="explore_front" style="background-image: url(<% restaurant['restaurant']['featured_image'] %>)">
+                  <% else %>
+                    <div class="explore_front" style="background-image: url(https://unsplash.it/500/500/)">
+                  <% end %>
+                      <div class="explore_inner">
+                        <p><%= restaurant['restaurant']['name'] %></p>
+                        <span><%= restaurant['restaurant']['cuisines'] %></span><br>
+                        <span>Rating: <%= restaurant['restaurant']['user_rating']['aggregate_rating'] %></span><br>
+                        <span>Avg. Cost for Two: $<%= restaurant['restaurant']['average_cost_for_two'] %></span><br>
+                        <span><%= link_to "Menu", restaurant['restaurant']['menu_url'] %></span>
+                      </div>
+                    </div>
+                    <div class="explore_back">
+                      <div class="explore_inner">
+                        <p>HOURS: <%= restaurant['restaurant']['timings'] %></p>
+                        <br>
+                        <p>ADDRESS: <%= restaurant['restaurant']['location']['address'] %></p>
+                        <br>
+                        <p><%= restaurant['restaurant']['phone_numbers'] %></p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            <% end %>
           </div>
-        </div>
-      </div>
       <% end %>
     </div>
-  <% else %>
-    <p class="text-white text-left">There are no restaurants trending at this time.</p>
-  <% end %>
+  </div>
+
 </div>
