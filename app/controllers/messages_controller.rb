@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Recipient.where(:user_id => current_user.id).order('created_at DESC')
+    
   end
 
   def new
