@@ -9,10 +9,10 @@
         <div class="dinder_card-body">
           <h5 class="dinder_card-title"> <%= restaurant['restaurant']['name'] %> </h5>
           <p class="dinder_card-text"> <%= restaurant['restaurant']['location']['address'] %> </p>
-          <div class="like_buttons">
+          <%# <div class="like_buttons">
             <span class="controls" id="decline"><i class="far fa-times-circle fa-5x"></i></span>
             <span class="controls" id="accept"><i class="fas fa-check-circle fa-5x"></i></span>
-          </div>
+          </div> %>
         </div>
       </div>
       <% else %>
@@ -21,13 +21,13 @@
           <div class="dinder_card_body">
             <h5 class="dinder_card_title"> <%= restaurant['restaurant']['name'] %> </h5>
             <p class="dinder_card_text"> <%= restaurant['restaurant']['location']['address'] %> </p>
-            <div class="like_buttons">
-              <span class="controls" id="decline"><i class="far fa-times-circle fa-5x"></i></span>
-              <span class="controls" id="accept"><i class="fas fa-check-circle fa-5x"></i></span>
-            </div>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
+    <div class="like_buttons">
+              <span class="controls" id="decline"><i class="far fa-times-circle fa-5x"></i></span>
+              <span class="controls" id="accept"><i class="fas fa-check-circle fa-5x"></i></span>
+            </div>
 <% end %>
