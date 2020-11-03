@@ -10,3 +10,14 @@
 <% else %>
 <P>no messages</p>
 <% end %>
+
+<% if @messages.any? %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+    <% @messages.each do |message| %>
+        <h5 class="card-title"><%= message.user.id %></h5>
+        <p class="card-text"><%= message.message.body %></p>
+        <% end %>
+    </div>
+  </div>
+  <% end %>
