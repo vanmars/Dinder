@@ -32,6 +32,12 @@
     <br>
 
     <div class="field">
+      <%= f.label :city %><br />
+      <%= f.text_field :city, class: 'form-control mx-auto', style: 'width: 40%' %>
+    </div>
+    <br>
+
+    <div class="field">
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control mx-auto', style: 'width: 40%' %>
     </div>
