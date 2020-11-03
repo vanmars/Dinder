@@ -20,6 +20,13 @@ class MessagesController < ApplicationController
     end
   end
 
+  def show
+    @message = Message.find(params[:id])
+    @sender = User.find(@message.sender_id)
+    # binding.pry
+
+  end
+
   private
   def message_params
     params.require(:message).permit(:body, :sender_id, user_ids: [])

@@ -23,5 +23,5 @@ class User < ApplicationRecord
 
   scope :friend_search, -> (friend_parameter) { where("name ilike ?", "%#{friend_parameter}%") }
 
-
+  
 end
