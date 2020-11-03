@@ -11,10 +11,11 @@
         </form>
       </div>
     </div>
-    <hr>
+    
 
     <%# Results for Restaurant Search by Name %>
     <% if @restaurants2 != nil %>
+      <hr>
       <h1 class="trending_title text-white"><b>Restaurant Results for  '<%= params[:name_search] %>' in <%= params[:city_search].titleize %> </b></h1>
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
