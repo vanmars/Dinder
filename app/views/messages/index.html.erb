@@ -1,23 +1,21 @@
 <h1>Messages</h1>
 <h4><%= current_user.name %>
-
+<hr>
 <% if @messages.any? %>
-  <ul>
-  <% @messages.each do |message| %>
-    <li><%= message.message.body %></li>
-  <% end %>
-  </ul>
-<% else %>
-<P>no messages</p>
-<% end %>
-
-<% if @messages.any? %>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
+  <%# <div class="card" style="width: 100%;"> %>
+    
     <% @messages.each do |message| %>
-        <h5 class="card-title"><%= message.user.id %></h5>
-        <p class="card-text"><%= message.message.body %></p>
+    <div class="card card-shadow p-4">
+        <p class="lead text-dark">Sender: <%= link_to message.message.sender.name, message_path(message.message) %></p>
+        <hr>
+        <p class="lead text-dark"><%= message.message.body %></p>
+     </div>   
         <% end %>
-    </div>
-  </div>
-  <% end %>
+    
+<% else %>
+<div class="card card-shadow p-4">
+<p class="lead text-dark">You have no messages.%></p>
+</div>
+<% end %>
+<hr>
+<h4><%= link_to 'New Message', new_message_path,  class: 'btn btn-danger'%></h4>
