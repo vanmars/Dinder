@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :avatar 
   
   has_many :messages, foreign_key: :sender_id
+  has_many :apis, foreign_key: :sender_id
 
   has_and_belongs_to_many :friends,
                           class_name: "User",
