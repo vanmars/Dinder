@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :friends] 
   
-  resources :restaurants
   resources :dinders, only: [:new]
   resources :messages
   get 'restaurants/explore', to: 'restaurants#explore', as: 'explore'
