@@ -41,7 +41,16 @@ class Restaurant
     response['restaurants']
   end
 
+  def search(city_id, name)
+    headers = { 
+      'user-key' => ENV['API_KEY']
+    }
+    response = HTTParty.get('https://developers.zomato.com/api/v2.1/search?entity_id=' + city_id.to_s + '&entity_type=city&q='+ name.to_s + '&count=15', :headers => headers)
+    response['restaurants']
+  end
 
-
+  def get_food_images
+    response = HTTParty.get('https://api.unsplash.com/topics/food-drink/photos?per_page=200&client_id=' + ENV['UNSPLASH_API_KEY'])
+  end  
 
 end

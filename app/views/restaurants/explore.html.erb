@@ -1,64 +1,101 @@
 <div class="explore_page">
-  <div class="nav">
-    <h1 class='display-1' style="color: #344055"><b>Explore Restaurants</b></h1>
-    <%# Search Bar %>
-    <div class="ml-auto">
-      <form class="form-inline my-2 my-lg-0">
-        <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Restaurant Name" aria-label="Search">
-        <button class="btn my-2 my-sm-0" style="background-color:#A8D0DB; color:#344055" type="submit">Search</button>
-      </form>
+    <div class="jumbotron">
+      <h1 class='display-1 text-white' style="color: #344055"><b>Explore Restaurants</b></h1>
+      <hr>
+      <%# Search Bar %>
+      <div class="d-flex justify-content-center">
+        <form class="form-inline my-2 my-lg-0">
+          <input id="city_search" name="city_search" class="form-control mr-sm-2" type="search" placeholder="City to Search" aria-label="City">
+          <input id="name_search" name="name_search" class="form-control mr-sm-2" type="search" placeholder="Restaurant Name" aria-label="Restaurant Name">
+          <button class="btn my-2 my-sm-0" style="background-color:#A8D0DB; color:#344055" type="submit">Search</button>
+        </form>
+      </div>
     </div>
-  </div>
-  <hr>
-  <%# Results for Cuisine by City %>
-  <div class="card shadow-lg p-4" style="background-color:#A8D0DB; color: #FB6376">
-    <h6 class=" display-4">Cuisines for <%= current_user.city.titleize %></h6>
     <hr>
-    <% if @cuisines.any? %>
-      <p class="lead text-dark text-left"><%= @cuisines.join(", ") %></p>
-    <% else %>
-      <p class="lead text-dark text-left">There are no cuisines for this city.</p>
-    <% end %>
-    <br>
-  </div>
 
-  <%# Results for Restaurants by Trending this Week %>
-  <div class="trending">
-    <div class="explore_wrapper">
-      <h1 class="trending_title text-white display-3">Trending This Week</h1>
-      <% if @restaurants.any? %>
-          <div class="explore_cols">
-            <% @restaurants.each do |restaurant| %>
-              <div class="explore_col" ontouchstart="this.classList.toggle('hover');">
-                <div class="explore_container">
-                  <% if restaurant['restaurant']['featured_image'] != "" %>
-                    <div class="explore_front" style="background-image: url(<% restaurant['restaurant']['featured_image'] %>)">
-                  <% else %>
-                    <div class="explore_front" style="background-image: url(https://unsplash.it/500/500/)">
-                  <% end %>
-                      <div class="explore_inner">
-                        <p><%= restaurant['restaurant']['name'] %></p>
-                        <span><%= restaurant['restaurant']['cuisines'] %></span><br>
-                        <span>Rating: <%= restaurant['restaurant']['user_rating']['aggregate_rating'] %></span><br>
-                        <span>Avg. Cost for Two: $<%= restaurant['restaurant']['average_cost_for_two'] %></span><br>
-                        <span><%= link_to "Menu", restaurant['restaurant']['menu_url'] %></span>
-                      </div>
-                    </div>
-                    <div class="explore_back">
-                      <div class="explore_inner">
-                        <p>HOURS: <%= restaurant['restaurant']['timings'] %></p>
-                        <br>
-                        <p>ADDRESS: <%= restaurant['restaurant']['location']['address'] %></p>
-                        <br>
-                        <p><%= restaurant['restaurant']['phone_numbers'] %></p>
-                      </div>
-                    </div>
+    <%# Results for Restaurant Search by Name %>
+    <% if @restaurants2 != nil %>
+      <h1 class="trending_title text-white"><b>Restaurant Results for  '<%= params[:name_search] %>' in <%= params[:city_search].titleize %> </b></h1>
+      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+          <% @restaurants2.each_with_index do |restaurant, index| %>
+            <% if index == 0 %>
+              <div class="carousel-item active">
+                <%= image_tag @food_photos.sample['urls']['thumb'], class:"d-block w-50 mx-auto", style: "height: 50vh" %>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5><%= restaurant['restaurant']['name'] %></h5>
+                  <p><%= restaurant['restaurant']['cuisines'] %></p>
+                  <%= link_to "Menu", restaurant['restaurant']['url'] %>
                 </div>
               </div>
+            <% else %>
+            <div class="carousel-item">
+              <%= image_tag @food_photos.sample['urls']['thumb'], class:"d-block w-50 mx-auto", style: "height: 50vh" %>
+              <div class="carousel-caption d-none d-md-block">
+                <h5><%= restaurant['restaurant']['name'] %></h5>
+                <p><%= restaurant['restaurant']['cuisines'] %></p>
+                <%= link_to "Menu", restaurant['restaurant']['url'] %>
+              </div>
+            </div>
             <% end %>
+          <% end %>
           </div>
-      <% end %>
+          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+    <% end %>
+
+    <%# Results for Restaurants by Trending this Week %>
+    <hr>
+    <div class="trending">
+      <div class="explore_wrapper">
+        <h1 class="trending_title text-white"><b>Trending This Week in <%= current_user.city %></b></h1>
+        <% if @restaurants.any? %>
+            <div class="explore_cols">
+              <% @restaurants.each do |restaurant| %>
+                <div class="explore_col" ontouchstart="this.classList.toggle('hover');">
+                  <div class="explore_container">
+                    <% if restaurant['restaurant']['featured_image'] != "" %>
+                      <div class="explore_front" style="background-image: url(<% restaurant['restaurant']['featured_image'] %>)">
+                    <% else %>
+                      <div class="explore_front" style="background-image: url(<%= @food_photos.sample['urls']['thumb'] %>)">
+                    <% end %>
+                        <div class="explore_inner">
+                          <p><%= restaurant['restaurant']['name'] %></p>
+                          <span><%= restaurant['restaurant']['cuisines'] %></span><br>
+                          <span>Rating: <%= restaurant['restaurant']['user_rating']['aggregate_rating'] %></span><br>
+                          <span>Avg. Cost for Two: $<%= restaurant['restaurant']['average_cost_for_two'] %></span><br>
+                          <span><%= link_to "Menu", restaurant['restaurant']['menu_url'] %></span>
+                        </div>
+                      </div>
+                      <div class="explore_back">
+                        <div class="explore_inner">
+                          <p>HOURS: <%= restaurant['restaurant']['timings'] %></p>
+                          <br>
+                          <p>ADDRESS: <%= restaurant['restaurant']['location']['address'] %></p>
+                          <br>
+                          <p><%= restaurant['restaurant']['phone_numbers'] %></p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+
+  
 
 </div>
