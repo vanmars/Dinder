@@ -1,0 +1,17 @@
+<p>Choose a city & a friend for your Dinder yo</p>
+<form action = '/dinders/dinder' method='get'>
+  <select name="city" id="city">
+    <option value=286>Portland</option>
+    <option value=279>Seattle</option>
+    <option value=10614>Beaverton</option>
+    <option value=1240>Spokane</option>
+  </select>
+
+  <select name="friend" id="friend">
+  <% current_user.friends.each do |friend| %>
+    <option value=<% friend.id %>><%= friend.name %></option>
+  <% end %>
+  </select>
+
+  <%= submit_tag 'Submit'%>
+</form>

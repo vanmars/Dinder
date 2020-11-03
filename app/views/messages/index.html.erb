@@ -1,0 +1,12 @@
+<h1>Messages</h1>
+<h4><%= current_user.name %>
+
+<% if @messages.any? %>
+  <ul>
+  <% @messages.each do |message| %>
+    <li><%= message.message.body %></li>
+  <% end %>
+  </ul>
+<% else %>
+<P>no messages</p>
+<% end %>

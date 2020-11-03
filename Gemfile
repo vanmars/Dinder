@@ -45,6 +45,7 @@ gem "cancancan", "~> 3.1"
 gem 'warden'
 gem 'httparty'
 gem 'hammerjs_rails'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
