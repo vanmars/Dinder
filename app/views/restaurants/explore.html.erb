@@ -5,7 +5,7 @@
       <%# Search Bar %>
       <div class="d-flex justify-content-center">
         <form class="form-inline my-2 my-lg-0">
-          <input id="city_search" name="city_search" class="form-control mr-sm-2" type="search" placeholder="City to Search" aria-label="City">
+          <input id="city_search" name="city_search" class="form-control mr-sm-2" type="search" placeholder="City to Search" aria-label="City" required>
           <input id="name_search" name="name_search" class="form-control mr-sm-2" type="search" placeholder="Restaurant Name" aria-label="Restaurant Name">
           <button class="btn my-2 my-sm-0" style="background-color:#A8D0DB; color:#344055" type="submit">Search</button>
         </form>
@@ -19,9 +19,13 @@
       <h1 class="trending_title text-white"><b>Restaurant Results for  '<%= params[:name_search] %>' in <%= params[:city_search].titleize %> </b></h1>
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            <% @restaurants2.each_with_index do |restaurant, index| %>
+              <% if index == 0 %>
+                <li data-target="#carouselExampleCaptions" data-slide-to="#{index}" class="active"></li>
+              <% else %>
+                <li data-target="#carouselExampleCaptions" data-slide-to="#{index}"></li>
+              <% end %>
+            <% end %>
           </ol>
           <div class="carousel-inner">
           <% @restaurants2.each_with_index do |restaurant, index| %>

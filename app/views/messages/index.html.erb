@@ -1,6 +1,41 @@
-<h1>Messages</h1>
-<h4><%= current_user.name %>
-<hr>
+<div class="messages_index_page">
+  <div class="messages_index_body p-4">
+    <h1 style="color:#344055">Messages</h1>
+    <h4><%= current_user.name %></h4><br>
+    <h4><%= link_to 'New Message', new_message_path,  class: 'btn', style: "background-color:#A8D0DB; color: #FB6376" %></h4>
+    <hr>
+    <% if @messages.any? %>
+      <% @messages.each do |message| %>
+        <section class="messages_index_timeline">
+          <ul>
+            <li>
+              <div>
+                <time><%= message.message.id %></time>
+                <div class="sender">
+                  <h3 style="color:#A8D0DB">From: </h3>
+                  <p>
+                    <%= link_to message.message.sender.name, message_path(message.message) %>
+                  </p>
+                </div>
+                <div class="message">
+                  <h3 style="color:#A8D0DB">Message: </h3>
+                  <span><%= message.message.body %></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      <% end %>
+    <% else %>
+      <div class="card card-shadow p-4">
+        <p class="lead text-dark">You have no messages.</p>
+      </div>
+    <% end %>    
+  </div>
+</div>
+
+
+
 <% if @messages.any? %>
   <%# <div class="card" style="width: 100%;"> %>
     
@@ -24,10 +59,11 @@
     
 <% else %>
 <div class="card card-shadow p-4">
-<p class="lead text-dark">You have no messages.</p>
-
+  <p class="lead text-dark">You have no messages.</p>
 </div>
 <% end %>
-<hr>
-<h4><%= link_to 'New Message', new_message_path,  class: 'btn btn-danger'%></h4>
 
+############################################
+
+
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
