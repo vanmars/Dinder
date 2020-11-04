@@ -1,0 +1,9 @@
+<h1>Reply to: <%=@recipient.name%></h1>
+
+<%= form_for @message do |f| %>
+  <%= f.text_area :body %>
+  <%= hidden_field_tag 'message[user_ids][]', @recipient.id %>%>
+
+
+  <%= f.submit %>
+<% end %>

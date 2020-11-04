@@ -16,6 +16,8 @@ class DindersController < ApplicationController
     parsed = JSON.parse(json)
     @restaurants = parsed
     # binding.pry
+    api_user = ApiUser.find(params[:api_user_id])
+    api_user.destroy
     render :accept
   end
 
@@ -32,8 +34,7 @@ class DindersController < ApplicationController
     json = @restaurants.to_json
     
     @api = Api.create(:sender_id => current_user.id, :json => json, :user_ids => params[:user_ids].map(&:to_i))
-    @user = current_user
-    @friends = User.all
+
     render :show
   end
 

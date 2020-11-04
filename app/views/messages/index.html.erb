@@ -9,8 +9,18 @@
         <p class="lead text-dark">Sender: <%= link_to message.message.sender.name, message_path(message.message) %></p>
         <hr>
         <p class="lead text-dark"><%= message.message.body %></p>
+
+      <%= form_tag '/messages/destroy', method: :post do %>
+        <%= hidden_field_tag 'recipient_id', message.id %>
+        <%= submit_tag 'delete', class: 'btn btn-success'%>
+      <% end %>
+      <%= form_tag '/messages/reply', method: :post do %>
+        <%= hidden_field_tag 'user_id', message.message.sender.id %>
+        <%= submit_tag 'reply', class: 'btn btn-danger'%>
+      <% end %>
+
      </div>   
-        <% end %>
+    <% end %>
     
 <% else %>
 <div class="card card-shadow p-4">
