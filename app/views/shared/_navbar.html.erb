@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FB6376">
-  <a class="navbar-brand" href='/'>
+  <a class="navbar-brand mb-5" href='/'>
     <%= image_tag("dinder_logo_dark", size: "128x48") %>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,31 +10,31 @@
     <%# Nav Items %>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <%= link_to "#{current_user.name}'s Profile", user_path(current_user), class: 'nav-link'%>
+        <li class="nav-item profile_link">
+          <%= link_to "#{current_user.name}'s Profile", user_path(current_user), class: 'nav-link', style: 'font-size: 18px; color: #A8D0DB; :hover color: #FB6376' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Friends", friends_path(current_user), class: 'nav-link'%>
+          <%= link_to "Friends", friends_path(current_user), class: 'nav-link', style: 'font-size: 16px' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Messages", messages_path, class: 'nav-link'%>
+          <%= link_to "Messages", messages_path, class: 'nav-link', style: 'font-size: 16px' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Dinders", dinders_path, class: 'nav-link'%>
+          <%= link_to "Dinders", dinders_path, class: 'nav-link', style: 'font-size: 16px' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Explore", explore_path, class: 'nav-link'%>
+          <%= link_to "Explore", explore_path, class: 'nav-link' , style: 'font-size: 16px'%>
         </li>
       </ul>
     </div>
      <%# Sign In / Sign Out %>
     <div class="navbar-nav ml-auto">
-      <button class='btn btn-sm' style='background-color: #344055; color:#A8D0DB'><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></button>
+      <button class='btn btn-sm' style='background-color: #344055; color:#A8D0DB; font-size: 14px'><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></button>
     </div>
   <% else %>
     <div class="navbar-nav ml-auto">
-      <button class='btn btn-sm mr-2' style='background-color: #A8D0DB; color:#344055'><%= link_to "Sign In", new_user_session_path%></button>
-      <button class='btn btn-sm' style='background-color: #344055; color:#A8D0DB'><%= link_to "Sign Up", new_user_registration_path%></button> 
+      <button class='btn btn-sm mr-2' style='background-color: #A8D0DB; color:#344055; font-size: 14px'><%= link_to "Sign In", new_user_session_path%></button>
+      <button class='btn btn-sm' style='background-color: #344055; color:#A8D0DB; font-size: 14px'><%= link_to "Sign Up", new_user_registration_path%></button> 
     </div>
   <% end %> 
 </nav>
