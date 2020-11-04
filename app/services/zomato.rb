@@ -40,7 +40,7 @@ class Zomato
     response = HTTParty.get('https://developers.zomato.com/api/v2.1/search?entity_id=' + city_id.to_s + '&entity_type=city&count=10&collection_id=1', :headers => headers)
     response['restaurants']
   end
-
+ 
   def get_url
     headers = { 
       'user-key' => ENV['API_KEY']
