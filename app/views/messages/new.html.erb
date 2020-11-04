@@ -1,20 +1,13 @@
 
-<h1>Hello</h1>
+<h1 class="text-white display-4 d-inline">New Message:</h1>
 
 <%= form_for @message, :html => { :class => 'form-messages'} do |f| %>
-  <%= f.text_area :body, size: "52x5" %>
-  <!-- <ul>
-    <% @recipients.each do |user| %>
-      <li>
-      <%= check_box_tag 'message[user_ids][]', user.id %>
-      <%= user.name %>
-      </li>
-    <% end %>
-    </ul>
-
-  <%= f.submit %>
-<% end %> -->
-
+  <%= f.text_area :body, size: "52x5", placeholder: "Say something..." %>
+  
+  <br>
+  <h3 class="text-white display-4 d-inline"> Recipients: </h3>
+  <br>
+  
 
   <% @recipients.each do |user| %>
     <div class="inputGroupMessages">
@@ -25,3 +18,4 @@
     <% end %>
 
   <%= submit_tag 'Submit' %>
+<%end %>
