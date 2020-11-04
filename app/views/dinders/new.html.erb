@@ -1,5 +1,5 @@
 <div class='dinder-new-wrapper'>
-  <p>Choose a city & a friend for your Dinder, yo</p>
+  <p class="text-white display-4 d-inline">Choose City & Friend </p>
     <form class="form-dinder" action='/dinders/dinder' method='get'>
       <select name="city" id="city">
         <option value=286>Portland</option>
@@ -8,7 +8,8 @@
         <option value=1240>Spokane</option>
       </select>
       <br>
-      <h2 class="text-white">Friends</h2>
+      <br>
+      <h2 class="text-white display-4 d-inline">Friends</h2>
 
       <% User.all.each do |friend| %>
         <div class="inputGroup">
