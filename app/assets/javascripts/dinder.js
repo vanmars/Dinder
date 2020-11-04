@@ -1,11 +1,9 @@
 
 $(function(){
-  
   var $activeCard = $('#card_group .dinder_card:first-child');
 
   $activeCard.addClass('showing');
  
-  
   $('#decline').on('click', function() {
     console.log('decline')
     goToCard('decline');
@@ -15,8 +13,8 @@ $(function(){
     var restaurant_id = $activeCard.data("id");
     console.log(restaurant_id);
 
-    Rails.ajax({
-      url:"/dinders/approve",
+    $.ajax({
+      url:"/dinders/approve/" + restaurant_id,
       method: 'post',
       dataType: 'ajax'
     });

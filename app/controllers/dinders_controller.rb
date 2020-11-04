@@ -38,7 +38,8 @@ class DindersController < ApplicationController
     #swipe right
     # @liked_restaurant = LikedRestaurant.new()
     @user = current_user
-    puts "approved"
+    @restaurant = Restaurant.new(params[:zomato_id])
+    puts 'HEYOOOOO'
     redirect_to '/dinders'
   end
 
@@ -61,7 +62,3 @@ class DindersController < ApplicationController
   #   params.require(:api).permit(:json, :sender_id, user_ids: [])
   # end
 end
-# url = 'http://localhost:3000/dinders/dinder?city=' + @city + ''
-
-
-# http://localhost:3000/dinders/dinder?city=1240&user_ids%5B%5D=1&user_ids%5B%5D=2&user_ids%5B%5D=3&user_ids%5B%5D=4&user_ids%5B%5D=5&commit=Submit
