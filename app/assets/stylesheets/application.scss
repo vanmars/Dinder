@@ -4,8 +4,10 @@
  @import "explore";
  @import "dinders_new";
  @import "messages_index";
+ @import "profile_show";
+ @import "messages_new";
 
-body {
+ body {
   background-color: #344055;
 }
 
@@ -79,4 +81,3 @@ body {
    height: auto;
  }
  
-
