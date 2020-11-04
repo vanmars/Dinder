@@ -23,7 +23,7 @@
         height: 10px;
         border-radius: 50%;
         content: '';
-        background-color: #5562eb;
+        background-color: #FB6376;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -84,11 +84,12 @@
 
 // // codepen formatting
 .form-dinder {
+  font: normal 16px/1.5 'Titillium Web', sans-serif;
   padding: 0 16px;
   max-width: 550px;
   margin: 50px auto;
   font-size: 18px;
-  font-weight: 600;
+  // font-weight: 600;
   line-height: 36px;
 }
 
