@@ -12,7 +12,15 @@ $(function(){
   });
    
   $('#accept').on('click', function() {
-   console.log('accept')
+    var restaurant_id = $activeCard.data("id");
+    console.log(restaurant_id);
+
+    $.ajax({
+      url:"/accept" + restaurant_id,
+      method: 'post',
+      dataType: 'ajax'
+    });
+    
     goToCard('accept');
   });
     
