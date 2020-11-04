@@ -13,5 +13,4 @@ class RestaurantsController < ApplicationController
     end
     render :explore
   end
-
 end
