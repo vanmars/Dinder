@@ -16,7 +16,7 @@
     <%# Results for Restaurant Search by Name %>
     <% if @restaurants2 != nil %>
       <hr>
-      <h1 class="trending_title text-white"><b>Restaurant Results for  '<%= params[:name_search] %>' in <%= params[:city_search].titleize %> </b></h1>
+      <h1 class="trending_title text-white" style="color: #FB6376"><b>Restaurant Results for  '<%= params[:name_search] %>' in <%= params[:city_search].titleize %> </b></h1>
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <% @restaurants2.each_with_index do |restaurant, index| %>
@@ -65,7 +65,7 @@
     <hr>
     <div class="trending">
       <div class="explore_wrapper">
-        <h1 class="trending_title text-white"><b>Trending This Week in <%= current_user.city %></b></h1>
+        <h1 class="trending_title" style="color: #FB6376"><b>Trending This Week in <%= current_user.city %></b></h1>
         <% if @restaurants.any? %>
             <div class="explore_cols">
               <% @restaurants.each do |restaurant| %>
@@ -78,19 +78,21 @@
                     <% end %>
                         <div class="explore_inner">
                           <p><%= restaurant['restaurant']['name'] %></p>
-                          <span><%= restaurant['restaurant']['cuisines'] %></span><br>
+                          <span style="color: #FB6376"><%= restaurant['restaurant']['cuisines'] %></span><br><br>
                           <span>Rating: <%= restaurant['restaurant']['user_rating']['aggregate_rating'] %></span><br>
                           <span>Avg. Cost for Two: $<%= restaurant['restaurant']['average_cost_for_two'] %></span><br>
-                          <span><%= link_to "Menu", restaurant['restaurant']['menu_url'] %></span>
+                          
                         </div>
                       </div>
                       <div class="explore_back">
                         <div class="explore_inner">
-                          <p>HOURS: <%= restaurant['restaurant']['timings'] %></p>
+                          <p><span style="color: #A8D0DB">HOURS:</span> <%= restaurant['restaurant']['timings'] %></p>
                           <br>
-                          <p>ADDRESS: <%= restaurant['restaurant']['location']['address'] %></p>
+                          <p><span style="color: #A8D0DB">ADDRESS:</span> <%= restaurant['restaurant']['location']['address'] %></p>
                           <br>
-                          <p><%= restaurant['restaurant']['phone_numbers'] %></p>
+                          <p><span style="color: #344055"><%= restaurant['restaurant']['phone_numbers'] %></span></p>
+                          <br>
+                          <span><%= link_to "Menu", restaurant['restaurant']['menu_url'] %></span>
                         </div>
                       </div>
                   </div>

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+
+.profile_card {
+background-color: #A8D0DB;
+background-image: linear-gradient(147deg, #A8D0DB 0%, #FB6376 74%);
+min-height: 100vh;
+font-family: 'Fira Sans', sans-serif;
+display: flex;
+border-radius: 25px;
+}
+
+.profile_card .card-img {
+  border-radius: 30px;
+}
