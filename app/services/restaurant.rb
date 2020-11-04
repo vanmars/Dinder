@@ -47,6 +47,7 @@ class Restaurant
     }
     @response = HTTParty.get('https://developers.zomato.com/api/v2.1/search?entity_id=' + @city + '&entity_type=city&count=5', :headers => headers)
     @reponse
+  end
 
   def search(city_id, name)
     headers = { 
