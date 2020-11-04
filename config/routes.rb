@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   get 'dinders/reject', to: 'dinders#reject', as: 'reject'
   post 'messages/destroy', to: 'messages#destroy', as: 'destroy'
   post 'messages/reply', to: 'messages#reply', as: 'reply'
+  # post 'dinders/approve', to: 'dinders#approve', as: 'approve'
+  post 'dinders/approve', to: 'dinders#approve', as: 'approve'
+  
 end
