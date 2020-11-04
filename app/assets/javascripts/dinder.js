@@ -13,6 +13,7 @@ $(function(){
     var restaurant_name = $activeCard.data("name");
     var restaurant_address = $activeCard.data("address");
     var restaurant_site = $activeCard.data("site");
+    var dinder = $activeCard.data("dinder");
     console.log(restaurant_id);
     console.log(restaurant_name);
     console.log(restaurant_address);
@@ -25,7 +26,8 @@ $(function(){
       data: { zomato_id: restaurant_id,
               address: restaurant_address,
               site: restaurant_site,
-              name: restaurant_name
+              name: restaurant_name,
+              dinder: dinder
             }
     });
 

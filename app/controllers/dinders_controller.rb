@@ -14,8 +14,11 @@ class DindersController < ApplicationController
     api_call = Api.find(params[:id])
     json = api_call.json
     parsed = JSON.parse(json)
+
     @restaurants = parsed
-    # binding.pry
+    restaurant = Zomato.new(params[:city])
+    @food_photos = restaurant.get_food_images
+    
     api_user = ApiUser.find(params[:api_user_id])
     api_user.destroy
     render :accept
@@ -23,7 +26,6 @@ class DindersController < ApplicationController
 
   def dinder
     @restaurant = Zomato.new(restaurant_params)
-
     restaurant = Zomato.new(params[:city])
     # city_id = restaurant.get_city_id
     @food_photos = restaurant.get_food_images
@@ -37,8 +39,32 @@ class DindersController < ApplicationController
   def like
     #swipe right
     @user = current_user
-    restaurant = Restaurant.create(name: params[:name], address: params[:address], site: params[:site], zomato_id: params[:zomato_id].to_i)
+    
+    if Restaurant.find_by_name(params[:name]).any?
+      restaurant = Restaurant.find_by_name(params[:name]).first
+    else
+      restaurant = Restaurant.create(name: params[:name], address: params[:address], site: params[:site], zomato_id: params[:zomato_id].to_i)
+    end
     @user.restaurants << restaurant
+    # compare sent user
+
+    # last_api = Api.all.last
+    # sender = last_api.sender
+    # if current_user != sender
+    #   reciever = current_user
+    #   puts "is receiver"
+    # else
+    #   puts "is sender"
+    # end
+
+    # join = ApiUser.where(api_id: last_api.id)
+    # sent_to = join.first.user
+    # sender variable
+    # receiver variable
+
+    # array = sender.restaurants & reciever.restaurants
+    # dinder = array.sample
+    # puts dinder
   end
 
   def decline

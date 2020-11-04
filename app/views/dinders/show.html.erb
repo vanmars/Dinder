@@ -5,7 +5,9 @@
       <div class="dinder_card showing" 
         data-id="<%= restaurant['restaurant']['id'] %>"
         data-address="<%= restaurant['restaurant']['location']['address'] %>"
-        data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>">
+        data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>" 
+        data-dinder="sender">
+    
         <% if restaurant['restaurant']['featured_image'] != "" %>
           <%= image_tag(restaurant['restaurant']['featured_image'], class: 'dinder_card_img_top')%>
         <% else %>
@@ -16,7 +18,7 @@
         </div>
       </div>
       <% else %>
-        <div class="dinder_card" data-id="<%= restaurant['restaurant']['id'] %>" data-address="<%= restaurant['restaurant']['location']['address'] %>" data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>"> 
+        <div class="dinder_card" data-id="<%= restaurant['restaurant']['id'] %>" data-address="<%= restaurant['restaurant']['location']['address'] %>" data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>" data-dinder="sender"> 
           <% if restaurant['restaurant']['featured_image'] != "" %>
             <%= image_tag(restaurant['restaurant']['featured_image'], class: 'dinder_card_img_top')%>
           <% else %>

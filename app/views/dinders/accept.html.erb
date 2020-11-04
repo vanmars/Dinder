@@ -4,18 +4,29 @@
   <div class="card-group" id="card_group">
     <% @restaurants.each_with_index do | restaurant, index | %>
       <% if index == 0 %>
-      <div class="dinder_card showing" data-id="<%= restaurant['restaurant']['id'] %>">
-        <%= image_tag(restaurant['restaurant']['featured_image'], class: 'dinder_card_img_top', alt: 'app/assets/images/dinder_logo.png')%>
+      <div class="dinder_card showing" 
+        data-id="<%= restaurant['restaurant']['id'] %>"
+        data-address="<%= restaurant['restaurant']['location']['address'] %>"
+        data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>"
+        data-dinder="reciever">
+        <% if restaurant['restaurant']['featured_image'] != "" %>
+          <%= image_tag(restaurant['restaurant']['featured_image'], class: 'dinder_card_img_top')%>
+        <% else %>
+          <%= image_tag(@food_photos.sample['urls']['thumb'], class: 'dinder_card_img_top')%>
+        <% end %>
         <div class="dinder_card_body">
-          <h1 class="dinder_card_title"> <%= restaurant['restaurant']['name'] %> </h5>
           <p class="dinder_card_text"> <%= restaurant['restaurant']['location']['address'] %> </p>
         </div>
       </div>
       <% else %>
-        <div class="dinder_card" data-id="<%= restaurant['restaurant']['id'] %>"> 
-          <%= image_tag(restaurant['restaurant']['featured_image'], class: 'dinder_card_img_top') %>
+        <div class="dinder_card" data-id="<%= restaurant['restaurant']['id'] %>" data-address="<%= restaurant['restaurant']['location']['address'] %>" data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>" data-dinder="reciever"> 
+          <% if restaurant['restaurant']['featured_image'] != "" %>
+            <%= image_tag(restaurant['restaurant']['featured_image'], class: 'dinder_card_img_top')%>
+          <% else %>
+            <%= image_tag(@food_photos.sample['urls']['thumb'], class: 'dinder_card_img_top')%>
+          <% end %>
           <div class="dinder_card_body">
-            <h1 class="dinder_card_title"> <%= restaurant['restaurant']['name'] %> </h5>
+            <h1 class="dinder_card_title "> <%= restaurant['restaurant']['name'] %> </h5>
             <p class="dinder_card_text"> <%= restaurant['restaurant']['location']['address'] %> </p>
           </div>
         </div>
@@ -23,7 +34,7 @@
     <% end %>
   </div>
     <div class="like_buttons">
-              <span class="controls" id="decline"><i class="far fa-times-circle fa-5x"></i></span>
-              <span class="controls" id="accept"><i class="fas fa-check-circle fa-5x"></i></span>
-            </div>
+      <span class="controls" id="decline"><i class="far fa-times-circle fa-5x"></i></span>
+      <span class="controls" id="like"><i class="fas fa-check-circle fa-5x"></i></span>
+    </div>
 <% end %>
