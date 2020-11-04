@@ -14,11 +14,8 @@ $(function(){
     var restaurant_address = $activeCard.data("address");
     var restaurant_site = $activeCard.data("site");
     var dinder = $activeCard.data("dinder");
-    console.log(restaurant_id);
-    console.log(restaurant_name);
-    console.log(restaurant_address);
-    console.log(restaurant_site);
-
+    var api_id = $activeCard.data("api_id");
+    console.log(api_id)
     $.ajax( "/dinders/like", {
 
       method: 'POST',
@@ -27,7 +24,8 @@ $(function(){
               address: restaurant_address,
               site: restaurant_site,
               name: restaurant_name,
-              dinder: dinder
+              dinder: dinder,
+              api_id: api_id
             }
     });
 

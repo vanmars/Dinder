@@ -19,9 +19,10 @@
   <% @recipients.each do |user| %>
     <div class="inputGroupMessages">
 
-      <input id="user_ids<%= user.id %>" name="user_ids[]" type="checkbox" value=<%= user.id %>/>
+      <input id="user_ids<%= user.id %>" name="user_ids[]" type="checkbox" value="<%= user.id %>"/>
       <label for="user_ids<%= user.id %>"><%= user.name %></label>
     </div>
     <% end %>
 
   <%= submit_tag 'Submit' %>
+

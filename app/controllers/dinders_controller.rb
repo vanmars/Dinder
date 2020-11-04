@@ -11,6 +11,8 @@ class DindersController < ApplicationController
   end
 
   def accept
+    current_user.restaurants.destroy_all
+    @api_id = params[:id]
     api_call = Api.find(params[:id])
     json = api_call.json
     parsed = JSON.parse(json)
@@ -25,6 +27,7 @@ class DindersController < ApplicationController
   end
 
   def dinder
+    current_user.restaurants.destroy_all
     @restaurant = Zomato.new(restaurant_params)
     restaurant = Zomato.new(params[:city])
     # city_id = restaurant.get_city_id
@@ -32,39 +35,32 @@ class DindersController < ApplicationController
     @restaurants = Zomato.new(params[:city]).get_nearby_restaurants
     json = @restaurants.to_json
     @api = Api.create(:sender_id => current_user.id, :json => json, :user_ids => params[:user_ids].map(&:to_i))
-
+    @api_id = @api.id
     render :show
   end
 
   def like
     #swipe right
-    @user = current_user
-    
-    if Restaurant.find_by_name(params[:name]).any?
-      restaurant = Restaurant.find_by_name(params[:name]).first
-    else
-      restaurant = Restaurant.create(name: params[:name], address: params[:address], site: params[:site], zomato_id: params[:zomato_id].to_i)
-    end
-    @user.restaurants << restaurant
-    # compare sent user
+      @user = current_user
+      @api = Api.find(params[:api_id])
+      if Restaurant.find_by_name(params[:name]).any?
+        restaurant = Restaurant.find_by_name(params[:name]).first
+      else
+        restaurant = Restaurant.create(name: params[:name], address: params[:address], site: params[:site], zomato_id: params[:zomato_id].to_i)
+      end
+      @user.restaurants << restaurant
+      if params[:dinder] = 'reciever'
+        puts params[:dinder]
+        sender = @api.sender
+        common_restaurants = sender.restaurants & @user.restaurants
+        if common_restaurants.any?
+          result = common_restaurants.last
+          puts "you have both matched on result.name"
+        end
+      end
+        
 
-    # last_api = Api.all.last
-    # sender = last_api.sender
-    # if current_user != sender
-    #   reciever = current_user
-    #   puts "is receiver"
-    # else
-    #   puts "is sender"
-    # end
 
-    # join = ApiUser.where(api_id: last_api.id)
-    # sent_to = join.first.user
-    # sender variable
-    # receiver variable
-
-    # array = sender.restaurants & reciever.restaurants
-    # dinder = array.sample
-    # puts dinder
   end
 
   def decline
