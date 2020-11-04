@@ -30,3 +30,17 @@ Restaurnt search
     <% end %>
     <br>
   </div> 
+
+
+dinder_new
+
+<% User.all.each do |friend| %>
+    <input type="checkbox" name="user_ids[]" id="user_ids_" value=<%= friend.id %> />
+    <%= friend.name %><br>
+    <% end %> 
+
+
+
+
+    <%= submit_tag 'Submit' %>
+  </form>
