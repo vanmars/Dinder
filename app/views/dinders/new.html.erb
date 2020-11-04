@@ -1,23 +1,81 @@
 <div class='dinder-new-wrapper'>
-  <p>Choose a city & a friend for your Dinder, yo</p>
+  <p class="display-4">Choose a city and friend(s) to Dinder!</p>
     <form class="form-dinder" action='/dinders/dinder' method='get'>
-      <select name="city" id="city">
-        <option value=286>Portland</option>
-        <option value=279>Seattle</option>
-        <option value=10614>Beaverton</option>
-        <option value=1240>Spokane</option>
+      <%# City %>
+      <h2 class="text-white">City</h2>
+      <select name="city" id="city" class="form-control">
+
+        <optgroup label="Arizona">
+          <option value=301>Phoenix</option>
+
+        <optgroup label="California">
+          <option value=281>Los Angeles</option>
+          <option value=302>San Diego</option>
+          <option value=306>San Francisco</option>
+
+        <optgroup label="Colorado">
+          <option value=305>Denver</option>
+
+         <optgroup label="District of Columbia">
+          <option value=283>Washington DC</option>
+
+        <optgroup label="Florida">
+          <option value=574>Jacksonville</option>
+
+        <optgroup label="Illinois">
+          <option value=292>Chicago</option>
+
+        <optgroup label="Indiana">
+          <option value=718>Indianapolis</option>
+
+        <optgroup label="Kentucky">
+          <option value=745>Louisville</option>
+
+        <optgroup label="Massachusetts">
+          <option value=289>Boston</option>
+
+        <optgroup label="New York">
+          <option value=280>New York</option>
+
+         <optgroup label="North Carolina">
+          <option value=303>Charlotte</option>
+        
+        <optgroup label="Ohio">
+          <option value=1021>Columbus</option>
+
+        <optgroup label="Oregon">
+          <option value=10614>Beaverton</option>
+          <option value=286>Portland</option>
+
+        <optgroup label="Pennsylvannia">
+          <option value=287>Philadelphia</option>
+
+        <optgroup label="Texas">
+          <option value=276>Dallas</option>
+          <option value=10978>Fort Worth</option>
+          <option value=277>Houston</option>
+          <option value=304>San Antonio</option>
+
+        <optgroup label="Washington">
+          <option value=279>Seattle</option>
+          <option value=1240>Spokane</option>
+
+        <optgroup label="Virginia">
+          <option value=1228>Hampton Roads</option>
+
       </select>
       <br>
+      <%# Friends %>
       <h2 class="text-white">Friends</h2>
-
-      <% User.all.each do |friend| %>
+      <% @friends.each do |friend| %>
         <div class="inputGroup">
-
           <input id="user_ids<%= friend.id %>" name="user_ids[]" type="checkbox" value=<%= friend.id %>/>
           <label for="user_ids<%= friend.id %>"><%= friend.name %></label>
         </div>
-        <% end %>
-      <%= submit_tag 'Submit' %>
+      <% end %>
+      <br>
+      <%= submit_tag 'Submit', class:'btn lead', style: 'background-color:#FB6376; color: white' %>
     </form>
 </div>
+
 
