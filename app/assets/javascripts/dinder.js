@@ -23,7 +23,7 @@ $(function(){
 
     //send data to controller
     if(action == "accept"){
-    
+      
     } else {
 
     }

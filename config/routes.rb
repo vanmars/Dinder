@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get 'dinders/dinder', to: 'dinders#dinder', as: 'dinder'
   get 'dinders/accept', to: 'dinders#accept', as: 'accept'
   get 'dinders/reject', to: 'dinders#reject', as: 'reject'
+  post 'messages/destroy', to: 'messages#destroy', as: 'destroy'
+  post 'messages/reply', to: 'messages#reply', as: 'reply'
 end
