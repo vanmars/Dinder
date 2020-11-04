@@ -15,7 +15,7 @@
 
     <%= form_tag '/dinders/reject', method: :get do %>
       <%= hidden_field_tag 'api_user_id', dinder.id %>
-      <%= submit_tag 'decline', class: 'btn btn-success'%>
+      <%= submit_tag 'decline', class: 'btn btn-danger'%>
     <% end %>
 
       </div>

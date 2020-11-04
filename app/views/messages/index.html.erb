@@ -16,7 +16,7 @@
       <% end %>
       <%= form_tag '/messages/reply', method: :post do %>
         <%= hidden_field_tag 'user_id', message.message.sender.id %>
-        <%= submit_tag 'reply', class: 'btn btn-success'%>
+        <%= submit_tag 'reply', class: 'btn btn-danger'%>
       <% end %>
 
      </div>   
