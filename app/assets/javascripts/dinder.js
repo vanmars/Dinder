@@ -1,4 +1,3 @@
-
 $(function(){
   var $activeCard = $('#card_group .dinder_card:first-child');
 
@@ -9,20 +8,28 @@ $(function(){
     goToCard('decline');
   });
    
-  $('#accept').on('click', function() {
+  $('#like').on('click', function() {
     var restaurant_id = $activeCard.data("id");
+    var restaurant_name = $activeCard.data("name");
+    var restaurant_address = $activeCard.data("address");
+    var restaurant_site = $activeCard.data("site");
     console.log(restaurant_id);
+    console.log(restaurant_name);
+    console.log(restaurant_address);
+    console.log(restaurant_site);
 
-    $.ajax({
-      url:"/dinders/approve/" + restaurant_id,
-      method: 'post',
-      dataType: 'ajax'
+    $.ajax( "/dinders/like", {
+
+      method: 'POST',
+      // dataType: 'ajax'
+      data: { zomato_id: restaurant_id,
+              address: restaurant_address,
+              site: restaurant_site,
+              name: restaurant_name
+            }
     });
 
-    // $.ajax("/dinders/accept/" + restaurant_id);
-
-    
-    goToCard('accept');
+    goToCard('like');
   });
     
   function goToCard(action) {
@@ -30,7 +37,7 @@ $(function(){
     $activeCard = $activeCard.next(".dinder_card")
    
     //send data to controller
-    if(action == "accept"){
+    if(action == "like"){
       
     } else {
 

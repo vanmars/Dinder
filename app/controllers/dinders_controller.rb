@@ -1,5 +1,5 @@
 class DindersController < ApplicationController
-  
+  skip_before_action :verify_authenticity_token, :only => [:like]
   def new
     # @restaurants = Restaurant.new
     @api = Api.new
@@ -34,13 +34,11 @@ class DindersController < ApplicationController
     render :show
   end
 
-  def approve
+  def like
     #swipe right
-    # @liked_restaurant = LikedRestaurant.new()
     @user = current_user
-    @restaurant = Restaurant.new(params[:zomato_id])
-    puts 'HEYOOOOO'
-    redirect_to '/dinders'
+    restaurant = Restaurant.create(name: params[:name], address: params[:address], site: params[:site], zomato_id: params[:zomato_id].to_i)
+    @user.restaurants << restaurant
   end
 
   def decline
