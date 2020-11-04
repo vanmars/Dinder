@@ -27,15 +27,16 @@
                 </div>
 
                 <div>
-                  <%= form_tag '/messages/destroy', method: :post do %>
-                    <%= hidden_field_tag 'recipient_id', message.id %>
-                    <%= submit_tag 'Delete', class: 'btn-sm btn-success'%>
+                <%= form_tag '/messages/reply', method: :post do %>
+                    <%= hidden_field_tag 'user_id', message.message.sender.id %>
+                    <%= submit_tag 'Reply', class: 'btn-sm btn-primary' %>
                   <% end %>
                   <br>
-                  <%= form_tag '/messages/reply', method: :post do %>
-                    <%= hidden_field_tag 'user_id', message.message.sender.id %>
-                    <%= submit_tag 'Reply', class: 'btn-sm btn-danger'%>
+                  <%= form_tag '/messages/destroy', method: :post do %>
+                    <%= hidden_field_tag 'recipient_id', message.id %>
+                    <%= submit_tag 'Delete', class: 'btn-sm btn-danger' %>
                   <% end %>
+                  
                 </div>
 
               </div>
