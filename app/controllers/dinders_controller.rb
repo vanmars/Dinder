@@ -22,17 +22,13 @@ class DindersController < ApplicationController
   end
 
   def dinder
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = Zomato.new(restaurant_params)
 
-    restaurant = Restaurant.new(params[:city])
+    restaurant = Zomato.new(params[:city])
     # city_id = restaurant.get_city_id
     @food_photos = restaurant.get_food_images
-
-
-    @restaurants = Restaurant.new(params[:city]).get_nearby_restaurants
-    
+    @restaurants = Zomato.new(params[:city]).get_nearby_restaurants
     json = @restaurants.to_json
-    
     @api = Api.create(:sender_id => current_user.id, :json => json, :user_ids => params[:user_ids].map(&:to_i))
 
     render :show
@@ -40,6 +36,10 @@ class DindersController < ApplicationController
 
   def approve
     #swipe right
+    # @liked_restaurant = LikedRestaurant.new()
+    @user = current_user
+    puts "approved"
+    redirect_to '/dinders'
   end
 
   def decline

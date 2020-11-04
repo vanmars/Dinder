@@ -15,11 +15,14 @@ $(function(){
     var restaurant_id = $activeCard.data("id");
     console.log(restaurant_id);
 
-    $.ajax({
-      url:"/accept" + restaurant_id,
+    Rails.ajax({
+      url:"/dinders/approve",
       method: 'post',
       dataType: 'ajax'
     });
+
+    // $.ajax("/dinders/accept/" + restaurant_id);
+
     
     goToCard('accept');
   });
@@ -28,7 +31,6 @@ $(function(){
     $activeCard.removeClass("showing")
     $activeCard = $activeCard.next(".dinder_card")
    
-
     //send data to controller
     if(action == "accept"){
       
