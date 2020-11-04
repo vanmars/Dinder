@@ -15,5 +15,4 @@ Rails.application.routes.draw do
   post 'messages/reply', to: 'messages#reply', as: 'reply'
   # post 'dinders/approve', to: 'dinders#approve', as: 'approve'
   post 'dinders/approve', to: 'dinders#approve', as: 'approve'
-  
 end
