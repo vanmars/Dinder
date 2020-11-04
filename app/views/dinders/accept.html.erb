@@ -8,25 +8,26 @@
         data-id="<%= restaurant['restaurant']['id'] %>"
         data-address="<%= restaurant['restaurant']['location']['address'] %>"
         data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>"
-        data-dinder="reciever">
+        data-dinder="reciever" data-api_id="<%= @api_id %>">
         <% if restaurant['restaurant']['featured_image'] != "" %>
           <%= image_tag(restaurant['restaurant']['featured_image'], class: 'dinder_card_img_top')%>
         <% else %>
           <%= image_tag(@food_photos.sample['urls']['thumb'], class: 'dinder_card_img_top')%>
         <% end %>
         <div class="dinder_card_body">
+          <h1 class="dinder_card_title "> <%= restaurant['restaurant']['name'] %> </h1>
           <p class="dinder_card_text"> <%= restaurant['restaurant']['location']['address'] %> </p>
         </div>
       </div>
       <% else %>
-        <div class="dinder_card" data-id="<%= restaurant['restaurant']['id'] %>" data-address="<%= restaurant['restaurant']['location']['address'] %>" data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>" data-dinder="reciever"> 
+        <div class="dinder_card" data-id="<%= restaurant['restaurant']['id'] %>" data-address="<%= restaurant['restaurant']['location']['address'] %>" data-name="<%= restaurant['restaurant']['name'] %>" data-site="<%= restaurant['restaurant']['url'] %>" data-dinder="reciever" data-api_id="<%= @api_id %>"> 
           <% if restaurant['restaurant']['featured_image'] != "" %>
             <%= image_tag(restaurant['restaurant']['featured_image'], class: 'dinder_card_img_top')%>
           <% else %>
             <%= image_tag(@food_photos.sample['urls']['thumb'], class: 'dinder_card_img_top')%>
           <% end %>
           <div class="dinder_card_body">
-            <h1 class="dinder_card_title "> <%= restaurant['restaurant']['name'] %> </h5>
+            <h1 class="dinder_card_title "> <%= restaurant['restaurant']['name'] %> </h1>
             <p class="dinder_card_text"> <%= restaurant['restaurant']['location']['address'] %> </p>
           </div>
         </div>

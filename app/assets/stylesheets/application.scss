@@ -48,9 +48,19 @@
  }
 
  .like_buttons {
+  position: relative;
+  color: #FB6376;
   text-align: center;
-  margin: 50px;
-  color: #FB6376
+  z-index: 2;
+  padding: 50px;
+}
+
+#like_button {
+  padding-left: 25px;
+}
+
+#decline_button {
+  padding-right: 25px;
 }
 
  #card_group {
@@ -70,6 +80,7 @@
   height: 100%;
   opacity: 0;
   z-index: 1;
+  margin-bottom: 50px;
  }
 
  .showing {
