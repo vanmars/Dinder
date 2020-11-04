@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
     if params[:city_search] && params[:name_search] 
       restaurant2 = Zomato.new(params[:city_search])
       city_id2 = restaurant2.get_city_id
-      @restaurant2 = restaurant2.search(city_id2, params[:name_search])
+      @restaurants2 = restaurant2.search(city_id2, params[:name_search])
     end
     render :explore
   end
