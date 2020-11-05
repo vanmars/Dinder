@@ -93,4 +93,12 @@
    height: auto;
    border-radius: 10px;
  }
- 
+
+ .modal-title {
+   text-align: center;
+ }
+
+ .modal-header, .modal-body, .modal-footer {
+  text-align: center; 
+  background-color: #E3F0F3
+ }
