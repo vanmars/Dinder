@@ -199,16 +199,14 @@
 
       </select>
       <br>
-      <%# Friends %>
-      <h2 class="text-white">Friends</h2>
-      <% @friends.each do |friend| %>
+      <h4 class="text-white display-4 d-inline">Friends</h4>
+      <% User.all.each do |friend| %>
         <div class="inputGroup">
           <input id="user_ids<%= friend.id %>" name="user_ids[]" type="checkbox" value=<%= friend.id %>/>
           <label for="user_ids<%= friend.id %>"><%= friend.name %></label>
         </div>
-      <% end %>
-      <br>
-      <%= submit_tag 'Submit', class:'btn lead', style: 'background-color:#FB6376; color: white' %>
+        <% end %>
+      <%= submit_tag 'Send the Dinvitation' %>
     </form>
 </div>
 
