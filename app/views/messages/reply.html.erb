@@ -1,9 +1,11 @@
-<h1>Reply to: <%=@recipient.name%></h1>
+<h1 class="text-white display-4 d-inline">Reply To: <span style="color:#FB6376"><%= @recipient.name %></span></h1>
+<hr>
 
 <%= form_for @message do |f| %>
-  <%= f.text_area :body %>
-  <%= hidden_field_tag 'message[user_ids][]', @recipient.id %>%>
-
-
-  <%= f.submit %>
+  <%= f.text_area :body, class:"w-50", style:"height: 200px" %>
+  <%= hidden_field_tag 'message[user_ids][]', @recipient.id %>
+  <br>
+  <br>
+  <%= f.submit "Send Reply", class:"btn btn-light text-white", style:"background-color:#FB6376" %>
 <% end %>
+

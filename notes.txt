@@ -1,4 +1,4 @@
-Color Palettes
+Color Palettes:
 
 Fiery Rose - #FB6376
 Azure - #E3F0F3
@@ -7,40 +7,4 @@ Light Blue - #A8D0DB
 
 
 
-https://unsplash.it/500/500/
-
-Restaurnt search
-
-
-
-
-
-<% @food_photos.each do |photo| %>
-        <img src= >
-      <% end %>
-
-<%# Results for Cuisine by City %>
-  <div class="card shadow-lg p-4" style="background-color:#A8D0DB; color: #FB6376">
-    <h6 class=" display-4">Cuisines for <%= current_user.city.titleize %></h6>
-    <hr>
-    <% if @cuisines.any? %>
-      <p class="lead text-dark text-left"><%= @cuisines.join(", ") %></p>
-    <% else %>
-      <p class="lead text-dark text-left">There are no cuisines for this city.</p>
-    <% end %>
-    <br>
-  </div> 
-
-
-dinder_new
-
-<% User.all.each do |friend| %>
-    <input type="checkbox" name="user_ids[]" id="user_ids_" value=<%= friend.id %> />
-    <%= friend.name %><br>
-    <% end %> 
-
-
-
-
-    <%= submit_tag 'Submit' %>
-  </form>
+Random Photo Generator: https://unsplash.it/500/500/
