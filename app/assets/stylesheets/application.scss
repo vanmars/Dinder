@@ -44,22 +44,21 @@
  }
 
  a :hover {
-   color:#E3F0F3
+   color:#E3F0F3;
  }
 
  .like_buttons {
   color: #FB6376;
-  text-align: center;
   z-index: 2;
   padding: 50px;
-  margin-bottom: 45x;
+  margin-bottom: 45px;
  }
 
-#like_button {
+#like {
   padding-left: 25px;
 }
 
-#decline_button {
+#decline {
   padding-right: 25px;
 }
 

@@ -2,7 +2,7 @@
 <hr>
 
 <%= form_for @message do |f| %>
-  <%= f.label :body %>
+  <% f.label :body %>
   <%= f.text_area :body, class:"w-50", style:"height: 200px" %>
   <%= hidden_field_tag 'user_ids[]', @recipient.id %>
   <br>

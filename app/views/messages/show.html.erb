@@ -1,9 +1,11 @@
 <h1 class="text-white">Message</h1>
 <hr>
 <div class="card card-shadow p-4">
-  <h4 class = 'lead text-dark'>From: <%= @message.sender.name %></h4>
+  <h4 class = 'lead text-dark'><span style="color:#A8D0DB">From: </span><%= @message.sender.name %></h4>
+  <h6 class = 'lead text-dark' style="font-size:12px">Date: <%= @message.created_at %></h6>
   <hr>
-  <h4 class = 'lead text-dark'>Body: <%= @message.body %></h4>
+  <h4 class = 'lead text-dark'><span style="color:#A8D0DB">Body: </span><br><br><%= @message.body %></h4>
+  <br>
   <br>
   <%= link_to 'Reply', new_message_path,  class:"btn btn-light text-white", style:"background-color:#FB6376; width:8%" %>
 </div>
