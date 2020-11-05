@@ -11,7 +11,7 @@ class DindersController < ApplicationController
   end
 
   def accept
-    current_user.restaurants.destroy_all
+
     @api_id = params[:id]
     api_call = Api.find(params[:id])
     json = api_call.json
@@ -27,7 +27,6 @@ class DindersController < ApplicationController
   end
 
   def dinder
-    current_user.restaurants.destroy_all
     @restaurant = Zomato.new(restaurant_params)
     restaurant = Zomato.new(params[:city])
     # city_id = restaurant.get_city_id
@@ -41,6 +40,7 @@ class DindersController < ApplicationController
 
   def like
     #swipe right
+    puts "like"
       @user = current_user
       @api = Api.find(params[:api_id])
       if Restaurant.find_by_name(params[:name]).any?
@@ -48,14 +48,25 @@ class DindersController < ApplicationController
       else
         restaurant = Restaurant.create(name: params[:name], address: params[:address], site: params[:site], zomato_id: params[:zomato_id].to_i)
       end
-      @user.restaurants << restaurant
+      if Winder.find_by_ids(params[:api_id], @user.id).any?
+        winder = Winder.find_by_ids(params[:api_id], @user.id).last
+      else
+        winder = @user.winders.create(api_id: @api.id)
+      end
+      winder.restaurants << restaurant
+
       if params[:dinder] = 'reciever'
         puts params[:dinder]
         sender = @api.sender
-        common_restaurants = sender.restaurants & @user.restaurants
+        sender_winder = sender.winders.where(api_id: @api.id).last
+        sender_restaurants = sender_winder.restaurants
+        common_restaurants = sender_restaurants & winder.restaurants
         if common_restaurants.any?
           result = common_restaurants.last
-          puts "you have both matched on result.name"
+          flash[:alert] = "you have both matched on #{result.name}"
+          @message = Message.create(:sender_id => sender.id, :body => "you and #{sender.name} have both matched on #{result.name}", :user_ids => [current_user.id])
+          Message.create(:sender_id => current_user.id, :body => "you and #{current_user.name} have both matched on #{result.name}", :user_ids => [sender.id])
+          result = []
         end
       end
         
