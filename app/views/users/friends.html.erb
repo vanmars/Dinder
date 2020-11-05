@@ -23,8 +23,22 @@
     <%# Pending Friends %>
     <% if @user.friend_requests.any? %>
       <% @user.friend_requests.each do | friend |%>
-        <div class="card p-3">
-          <%= link_to friend.name, user_path(friend) %>
+        <div class="card shadow-lg p-3 w-75">
+
+            <%= link_to friend.name, user_path(friend) %>
+            <br>
+            <div class="d-flex">
+              <form class="form-inline my-2 my-lg-0 mr-3">
+                <input id="accept_friend_request" name="accept_friend_request" type="hidden" value= <%= friend.id %> >
+                <button class="btn my-2 my-sm-0" style="color:#FB6376; background-color:#A8D0DB" type="submit">Accept</button>
+              </form>
+  
+              <form class="form-inline my-2 my-lg-0">
+                <input id="decline_friend_request" name="decline_friend_request" type="hidden" value= <%= friend.id %> >
+                <button class="btn btn-dark my-2 my-sm-0" style="color:#FB6376" type="submit">Decline</button>
+              </form>
+            </div>
+
         </div>
         <% end %>
     <% else %>

@@ -69,9 +69,6 @@ class DindersController < ApplicationController
           result = []
         end
       end
-        
-
-
   end
 
   def decline

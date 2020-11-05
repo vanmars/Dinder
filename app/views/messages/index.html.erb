@@ -13,16 +13,15 @@
           <ul>
             <li>
               <div>
-                <time><%= message.message.id %></time>
+                <time><i class="fas fa-envelope"></i></time>
                 <div class="sender">
                   <h3 style="color:#A8D0DB">From: </h3>
-                  <p>
-                    <%= link_to message.message.sender.name, message_path(message.message) %>
+                  <p style="color:#FB6376">
+                   <%= message.message.sender.name %>
                   </p>
                 </div>
                 <div class="message">
-                  <h3 style="color:#A8D0DB">Message: </h3>
-                  <span><%= message.message.body %></span>
+                  <h4 class="text-center"><%= link_to "See Message", message_path(message.message), style:"color:#344055" %></h4>
                 </div>
 
                 <div>

@@ -25,6 +25,20 @@ class UsersController < ApplicationController
     if params[:friend_search]
       @friends = User.friend_search(params[:friend_search])
     end
+    # Accept Friend Request
+    if params[:accept_friend_request]
+      requester =  User.find(params[:accept_friend_request])
+      requester.friends << @user
+      @user.friends << requester
+      requester.friend_requests.delete(@user)
+      @user.friend_requests.delete(requester)
+    end
+    # Decline Friend Request
+    if params[:decline_friend_request]
+      requester =  User.find(params[:decline_friend_request])
+      requester.friend_requests.delete(@user)
+      @user.friend_requests.delete(requester)
+    end
     render :friends
   end
 end

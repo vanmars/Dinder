@@ -4,7 +4,6 @@ $(function(){
   $activeCard.addClass('showing');
  
   $('#decline').on('click', function() {
-    console.log('decline')
     goToCard('decline');
   });
    
@@ -15,7 +14,7 @@ $(function(){
     var restaurant_site = $activeCard.data("site");
     var dinder = $activeCard.data("dinder");
     var api_id = $activeCard.data("api_id");
-    console.log(api_id)
+    
     $.ajax( "/dinders/like", {
 
       method: 'POST',
