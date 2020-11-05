@@ -1,6 +1,7 @@
 <h1>Reply to: <%=@recipient.name%></h1>
 
 <%= form_for @message do |f| %>
+  <%= f.label :body %>
   <%= f.text_area :body %>
   <%= hidden_field_tag 'user_ids[]', @recipient.id %>%>
 

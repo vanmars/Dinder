@@ -63,7 +63,7 @@ class DindersController < ApplicationController
         common_restaurants = sender_restaurants & winder.restaurants
         if common_restaurants.any?
           result = common_restaurants.last
-          puts "you have both matched on #{result.name}"
+          flash[:alert] = "you have both matched on #{result.name}"
           @message = Message.create(:sender_id => sender.id, :body => "you and #{sender.name} have both matched on #{result.name}", :user_ids => [current_user.id])
           Message.create(:sender_id => current_user.id, :body => "you and #{current_user.name} have both matched on #{result.name}", :user_ids => [sender.id])
           result = []
