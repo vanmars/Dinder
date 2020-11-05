@@ -1,0 +1,37 @@
+<h1>Matches#index</h1>
+<p>Find me in app/views/matches/index.html.erb</p>
+
+<div class="messages_index_page">
+  <div class="messages_index_body p-4">
+    <% if @matches.any? %>
+      <% @matches.each do |match| %>
+        <section class="messages_index_timeline">
+          <ul>
+            <li>
+              <div>
+                <time><%= match.id %></time>
+                <div class="sender">
+                  <h3 style="color:#A8D0DB">From: </h3>
+                  <p>
+                    <%= link_to match.sender.name, user_path(match.sender) %>
+                  </p>
+                </div>
+                <div class="message">
+                  <h3 style="color:#A8D0DB">Restaurant: </h3>
+                  <span><%= match.restaurant.name %></span>
+                </div>
+
+              
+              </div>
+            </li>
+          </ul>
+        </section>
+      <% end %>
+    <% else %>
+      <div class="card card-shadow p-4">
+        <p class="lead text-dark">You have no matches.</p>
+      </div>
+    <% end %>    
+  </div>
+</div>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'matches/index'
   root to: 'home#index'
 
   devise_for :users
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   
   resources :dinders, only: [:new, :index, :accept]
   resources :messages
+  resources :matches, only: [:index]
   get 'restaurants/explore', to: 'restaurants#explore', as: 'explore'
   get 'users/:id/friends', to: 'users#friends', as: 'friends'
   get 'dinders/dinder', to: 'dinders#dinder', as: 'dinder'
