@@ -7,8 +7,6 @@
   <br>
   <h3 class="text-white display-4 d-inline"> Recipients: </h3>
   <br>
-  
-
   <% @recipients.each do |user| %>
     <div class="inputGroupMessages">
 
@@ -16,6 +14,5 @@
       <label for="user_ids<%= user.id %>"><%= user.name %></label>
     </div>
     <% end %>
-
   <%= submit_tag 'Submit' %>
 <%end %>
