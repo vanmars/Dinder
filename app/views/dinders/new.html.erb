@@ -1,24 +1,215 @@
 <div class='dinder-new-wrapper'>
-  <p class="text-white display-4 d-inline">Choose City & Friend </p>
+  <h1 class="display-4">Choose a city and friend(s) to Dinder!</h1>
+  <hr>
     <form class="form-dinder" action='/dinders/dinder' method='get'>
-      <select name="city" id="city">
-        <option value=286>Portland</option>
-        <option value=279>Seattle</option>
-        <option value=10614>Beaverton</option>
-        <option value=1240>Spokane</option>
+      <%# City %>
+      <h2 class="text-white">City</h2>
+      <select name="city" id="city" class="form-control">
+        <optgroup label="Alabama">
+          <option value=421>Birmingham</option>
+          <option value=216>Montgomery</option>
+
+        <optgroup label="Alaska">
+          <option value=415>Anchorage</option>
+          <option value=4033>Juneau</option>
+
+        <optgroup label="Arizona">
+          <option value=301>Phoenix</option>
+          <option value=466>Tucson</option>
+
+        <optgroup label="Arkansas">
+          <option value=442>Little Rock</option>
+
+        <optgroup label="California">
+          <option value=281>Los Angeles</option>
+          <option value=499>Sacramento</option>
+          <option value=302>San Diego</option>
+          <option value=306>San Francisco</option>
+
+        <optgroup label="Colorado">
+          <option value=11184>Boulder</option>
+          <option value=529>Colorado Springs</option>
+          <option value=305>Denver</option>
+
+         <optgroup label="Connecticut">
+          <option value=544>Hartford</option>
+
+        <optgroup label="Delaware">
+          <option value=4524>Dover</option>
+          <option value=556>Wimington</option>
+
+         <optgroup label="District of Columbia">
+          <option value=283>Washington DC</option>
+
+        <optgroup label="Florida">
+          <option value=574>Jacksonville</option>
+          <option value=291>Miami</option>
+          <option value=604>Tampa Bay</option>
+
+        <optgroup label="Georgia">
+          <option value=288>Atlanta</option>
+        
+        <optgroup label="Idaho">
+          <option value=644>Boise</option>
+          <option value=676>Coeur d'Alene</option>
+
+        <optgroup label="Illinois">
+          <option value=292>Chicago</option>
+          <option value=700>Springfield</option>
+
+        <optgroup label="Indiana">
+          <option value=718>Indianapolis</option>
+        
+        <optgroup label="Iowa">
+          <option value=643>Des Moines</option>
+        
+        <optgroup label="Kansas">
+          <option value=733>Topeka</option>
+          <option value=730>Wichita</option>
+
+        <optgroup label="Kentucky">
+          <option value=745>Louisville</option>
+
+        <optgroup label="Louisiana">
+          <option value=757>Baton Rouge</option>
+          <option value=290>New Orleans</option>
+
+        <optgroup label="Maine">
+          <option value=6182>Augusta</option>
+          <option value=793>Portland</option>
+
+        <optgroup label="Maryland">
+          <option value=787>Baltimore</option>
+
+        <optgroup label="Massachusetts">
+          <option value=289>Boston</option>
+
+        <optgroup label="Michigan">
+          <option value=285>Detroit</option>
+          <option value=814>Lansing</option>
+
+        <optgroup label="Minnesota">
+          <option value=832>Duluth</option>
+
+        <optgroup label="Mississippi">
+          <option value=862>Jackson</option>
+
+        <optgroup label="Missouri">
+          <option value=856>Kansas City</option>
+          <option value=844>St. Louis</option>
+
+         <optgroup label="Montana">
+          <option value=880>Billings</option>
+          <option value=883>Bozeman</option>
+          <option value=889>Helena</option>
+
+        <optgroup label="Nebraska">
+          <option value=946>Omaha</option>
+
+        <optgroup label="Nevada">
+          <option value=282>Las Vegas</option>
+
+        <optgroup label="New Hampshire">
+          <option value=7555>Portsmouth</option>
+        
+        <optgroup label="New Jersey">
+          <option value=3976>Newark</option>
+
+        <optgroup label="New Mexico">
+          <option value=964>Albuquerque</option>
+
+        <optgroup label="New York">
+          <option value=280>New York</option>
+
+         <optgroup label="North Carolina">
+          <option value=303>Charlotte</option>
+
+        <optgroup label="North Dakota">
+          <option value=937>Bismarck</option>
+          <option value=931>Fargo</option>
+        
+        <optgroup label="Ohio">
+          <option value=1030>Cincinnati</option>
+          <option value=1021>Columbus</option>
+
+        <optgroup label="Oklahoma">
+          <option value=1051>Oklahoma City</option>
+          <option value=1045>Tulsa</option>
+
+        <optgroup label="Oregon">
+          <option value=10614>Beaverton</option>
+          <option value=1066>Bend</option>
+          <option value=1063>Eugene</option>
+          <option value=1057>Medford</option>
+          <option value=286>Portland</option>
+          <option value=1060>Salem</option>
+
+        <optgroup label="Pennsylvannia">
+          <option value=287>Philadelphia</option>
+          <option value=1081>Pittsburgh</option>
+
+        <optgroup label="Rhode Island">
+          <option value=1096>Providence</option>
+
+        <optgroup label="South Carolina">
+          <option value=1105>Charleston</option>
+          <option value=1114>Columbia</option>
+
+        <optgroup label="South Dakota">
+          <option value=8742>Pierre</option>
+
+        <optgroup label="Tennessee">
+          <option value=1144>Memphis</option>
+          <option value=1138>Nashville</option>
+
+        <optgroup label="Texas">
+          <option value=276>Dallas</option>
+          <option value=10978>Fort Worth</option>
+          <option value=277>Houston</option>
+          <option value=304>San Antonio</option>
+
+        <optgroup label="Utah">
+          <option value=1213>Salt Lake City</option>
+
+        <optgroup label="Vermont">
+          <option value=9838>Burlington</option>
+
+        <optgroup label="Virginia">
+          <option value=1228>Hampton Roads</option>
+          <option value=1219>Richmond</option>
+          <option value=1225>Roanoke</option>
+
+        <optgroup label="Washington">
+          <option value=1252>Bellingham</option>
+          <option value=1249>Olympia</option>
+          <option value=9983>Richland</option>
+          <option value=279>Seattle</option>
+          <option value=1240>Spokane</option>
+          <option value=1246>Yakima</option>
+
+        <optgroup label="West Virginia">
+          <option value=1276>Charleston</option>
+
+        <optgroup label="Wisconsin">
+          <option value=1264>Madison</option>
+          <option value=1267>Milwaukee</option>
+
+        <optgroup label="Wyoming">
+          <option value=1291>Cheyenne</option>
+
       </select>
       <br>
-      <br>
-      <h4 class="text-white display-4 d-inline">Friends</h4>
-
-      <% User.all.each do |friend| %>
+      <%# Friends %>
+      <h2 class="text-white">Friends</h2>
+      <% @friends.each do |friend| %>
         <div class="inputGroup">
-
           <input id="user_ids<%= friend.id %>" name="user_ids[]" type="checkbox" value=<%= friend.id %>/>
           <label for="user_ids<%= friend.id %>"><%= friend.name %></label>
         </div>
-        <% end %>
-      <%= submit_tag 'Submit' %>
+      <% end %>
+      <br>
+      <%= submit_tag 'Submit', class:'btn lead', style: 'background-color:#FB6376; color: white' %>
     </form>
 </div>
+
 
