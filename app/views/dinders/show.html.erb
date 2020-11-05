@@ -21,18 +21,16 @@
             <p class="dinder_card_text"> <%= restaurant['restaurant']['location']['address'] %> </p>
           </div>
         </div>
-    <% puts 'first one' %>
+
       <% elsif index == 9 %>
      
-              
             <div class="dinder_card">
               <div>
                 <h1>No More!</h1>
-                <% puts 'last one' %>
+                <%= link_to image_tag("dinder_logo_ii.png", :border=>0), :action => 'index', :controller => 'home', :class => 'dock-item' %>
               </div>
             </div>
-  
-      
+
       <% else  %>
       
         <div class="dinder_card" 
@@ -48,11 +46,11 @@
               <%= image_tag(@food_photos.sample['urls']['thumb'], class: 'dinder_card_img_top')%>
             <% end %>
 
-            <div class="dinder_card_body">
-              <h1 class="dinder_card_title "> <%= restaurant['restaurant']['name'] %> </h1>
-              <p class="dinder_card_text"> <%= restaurant['restaurant']['location']['address'] %> </p>
-              <% puts 'middle one' %>
-            </div>
+          <div class="dinder_card_body">
+            <h1 class="dinder_card_title "> <%= restaurant['restaurant']['name'] %> </h1>
+            <p class="dinder_card_text"> <%= restaurant['restaurant']['location']['address'] %> </p>
+            <% puts 'middle one' %>
+          </div>
         </div> 
   
     <% end %>
