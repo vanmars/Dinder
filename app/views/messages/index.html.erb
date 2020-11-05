@@ -7,7 +7,6 @@
 <hr>
 <div class="messages_index_page">
   <div class="messages_index_body p-4">
-    <hr>
     <% if @messages.any? %>
       <% @messages.each do |message| %>
         <section class="messages_index_timeline">
@@ -51,6 +50,4 @@
     <% end %>    
   </div>
 </div>
-
-
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

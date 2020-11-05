@@ -58,7 +58,7 @@ class Zomato
   end
 
   def get_food_images
-    response = HTTParty.get('https://api.unsplash.com/topics/food-drink/photos?per_page=200&client_id=' + ENV['UNSPLASH_API_KEY'])
+    response = HTTParty.get('https://api.unsplash.com/topics/food-drink/photos?per_page=500&client_id=' + ENV['UNSPLASH_API_KEY'])
   end  
 end
 
