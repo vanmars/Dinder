@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   has_many :messages, foreign_key: :sender_id
   has_many :apis, foreign_key: :sender_id
-  has_many :dinders
+  has_many :winders
   
 
   has_and_belongs_to_many :friends,

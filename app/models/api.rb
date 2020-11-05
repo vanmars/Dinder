@@ -6,5 +6,5 @@ class Api < ApplicationRecord
  validates :sender_id, presence: true
  validates :json, presence: true
 
- has_many :dinders
+ has_many :winders
 end

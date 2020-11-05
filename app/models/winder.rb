@@ -1,4 +1,4 @@
-class Dinder < ApplicationRecord
+class Winder < ApplicationRecord
     belongs_to :api
     belongs_to :user
     has_many :liked_restaurants

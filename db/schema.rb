@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_043352) do
+ActiveRecord::Schema.define(version: 2020_11_05_045229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,15 +48,6 @@ ActiveRecord::Schema.define(version: 2020_11_05_043352) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "json"
-  end
-
-  create_table "dinders", force: :cascade do |t|
-    t.bigint "api_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["api_id"], name: "index_dinders_on_api_id"
-    t.index ["user_id"], name: "index_dinders_on_user_id"
   end
 
   create_table "friend_requests", id: false, force: :cascade do |t|
@@ -113,6 +104,15 @@ ActiveRecord::Schema.define(version: 2020_11_05_043352) do
     t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "winders", force: :cascade do |t|
+    t.bigint "api_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["api_id"], name: "index_winders_on_api_id"
+    t.index ["user_id"], name: "index_winders_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
