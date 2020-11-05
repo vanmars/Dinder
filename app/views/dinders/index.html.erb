@@ -12,12 +12,10 @@
         <%= hidden_field_tag 'api_user_id', dinder.id %>  
         <%= submit_tag 'accept', class: 'btn btn-success'%>
     <% end %>
-
     <%= form_tag '/dinders/reject', method: :get do %>
       <%= hidden_field_tag 'api_user_id', dinder.id %>
       <%= submit_tag 'decline', class: 'btn btn-danger'%>
     <% end %>
-
       </div>
   <% end %>
          <%# <span class="controls" id="decline_dinder"><i class="far fa-times-circle fa-5x"></i></span> %>
