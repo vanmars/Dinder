@@ -69,9 +69,6 @@ class DindersController < ApplicationController
           result = []
         end
       end
-        
-
-
   end
 
   def decline
@@ -82,6 +79,16 @@ class DindersController < ApplicationController
     api_user = ApiUser.find(params[:api_user_id])
     api_user.destroy
     redirect_to '/dinders'
+  end
+
+  def match
+    # if match
+    if  
+      #route to dinders/match
+      
+    else
+      #route to home/index
+    end
   end
 
   private
