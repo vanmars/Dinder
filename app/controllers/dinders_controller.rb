@@ -3,7 +3,7 @@ class DindersController < ApplicationController
   def new
     # @restaurants = Restaurant.new
     @api = Api.new
-    @friends = User.all
+    @friends = current_user.friends
   end
 
   def index
