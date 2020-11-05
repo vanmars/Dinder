@@ -8,8 +8,8 @@ class User < ApplicationRecord
   
   has_many :messages, foreign_key: :sender_id
   has_many :apis, foreign_key: :sender_id
-  has_many :liked_restaurants
-  has_many :restaurants, :through => :liked_restaurants
+  has_many :dinders
+  
 
   has_and_belongs_to_many :friends,
                           class_name: "User",
