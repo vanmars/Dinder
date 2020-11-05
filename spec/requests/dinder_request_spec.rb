@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe "Dinders", type: :request do
+# RSpec.describe "Dinders", type: :request do
 
-end
+# end
