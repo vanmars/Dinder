@@ -11,7 +11,6 @@ class DindersController < ApplicationController
   end
 
   def accept
-
     @api_id = params[:id]
     api_call = Api.find(params[:id])
     json = api_call.json
@@ -63,7 +62,9 @@ class DindersController < ApplicationController
         common_restaurants = sender_restaurants & winder.restaurants
         if common_restaurants.any?
           result = common_restaurants.last
-          flash[:alert] = "you have both matched on #{result.name}"
+          current_user.matches.create(restaurant_id: result.id, sender_id: sender.id)
+          sender.matches.create(restaurant_id: result.id, sender_id: current_user.id)
+
           @message = Message.create(:sender_id => sender.id, :body => "you and #{sender.name} have both matched on #{result.name}", :user_ids => [current_user.id])
           Message.create(:sender_id => current_user.id, :body => "you and #{current_user.name} have both matched on #{result.name}", :user_ids => [sender.id])
           result = []
@@ -80,6 +81,16 @@ class DindersController < ApplicationController
     api_user.destroy
     redirect_to '/dinders'
   end
+
+   def match
+    # if match
+    # if  
+    #   #route to dinders/match
+      
+    # else
+    #   #route to home/index
+    # end
+   end
 
   private
   def restaurant_params
