@@ -16,7 +16,8 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.messages.new(message_params)
+    puts params
+    @message = current_user.messages.new(:sender_id => current_user.id, :body => params['message']['body'], :user_ids => params[:user_ids].map(&:to_i))
     if @message.save
       flash[:alert] = "successful message"
       redirect_to messages_path
