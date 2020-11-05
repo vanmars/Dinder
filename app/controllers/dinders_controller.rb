@@ -11,7 +11,7 @@ class DindersController < ApplicationController
   end
 
   def accept
-    current_user.restaurants.destroy_all
+
     @api_id = params[:id]
     api_call = Api.find(params[:id])
     json = api_call.json
@@ -27,7 +27,6 @@ class DindersController < ApplicationController
   end
 
   def dinder
-    current_user.restaurants.destroy_all
     @restaurant = Zomato.new(restaurant_params)
     restaurant = Zomato.new(params[:city])
     # city_id = restaurant.get_city_id
@@ -41,6 +40,7 @@ class DindersController < ApplicationController
 
   def like
     #swipe right
+    puts "like"
       @user = current_user
       @api = Api.find(params[:api_id])
       if Restaurant.find_by_name(params[:name]).any?
@@ -48,14 +48,18 @@ class DindersController < ApplicationController
       else
         restaurant = Restaurant.create(name: params[:name], address: params[:address], site: params[:site], zomato_id: params[:zomato_id].to_i)
       end
-      @user.restaurants << restaurant
+      winder = @user.winders.create(api_id: @api.id)
+      winder.restaurants << restaurant
+binding.pry
       if params[:dinder] = 'reciever'
         puts params[:dinder]
         sender = @api.sender
-        common_restaurants = sender.restaurants & @user.restaurants
+        sender_winder = sender.winders.where(api_id: @api.id).last
+        sender_restaurants = sender_winder.restaurants
+        common_restaurants = sender_restaurants & winder.restaurants
         if common_restaurants.any?
           result = common_restaurants.last
-          puts "you have both matched on result.name"
+          puts "you have both matched on #{result.name}"
         end
       end
         
