@@ -48,12 +48,12 @@
  }
 
  .like_buttons {
-  position: relative;
   color: #FB6376;
   text-align: center;
   z-index: 2;
   padding: 50px;
-}
+  margin-bottom: 45x;
+ }
 
 #like_button {
   padding-left: 25px;
@@ -67,7 +67,7 @@
   position: relative;
   height: 300px;
   padding: 0px;
-  margin: 0px;
+  margin-top: 30px;
   list-style-type: none;
   text-align: center;
  }
@@ -86,10 +86,12 @@
  .showing {
   opacity: 1;
   z-index: 2;
+  margin-top: 75px;
  }
 
  .dinder_card_img_top {
    width: 25%;
    height: auto;
+   border-radius: 10px;
  }
  
