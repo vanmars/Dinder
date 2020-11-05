@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    @recipients = User.all
+    @recipients = current_user.friends
   end
 
   def reply

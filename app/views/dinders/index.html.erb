@@ -1,5 +1,4 @@
 <h1 class="text-white display-4">Dinders</h1>
-<h4><%= current_user.name %>
 <hr>
 <% if @dinders.any? %>
     
@@ -7,10 +6,10 @@
     <div class="card card-shadow p-4 accept_card">
       <div class="row">
         <div class="col" >
-          <p class="lead text-dark"><%= dinder.id%>  Sender: <%= dinder.api.sender.name %></p>
-          <p class="lead text-dark">Api Id: <%= link_to dinder.api.id , '/dinders/accept' %></p>
+          <p class="lead text-dark">From: <%= dinder.api.sender.name %></p>
+          
         </div>
-        <div class="col" >
+        <div class="col text-center" >
           <%= form_tag '/dinders/accept', method: :get do %>    
             <%= hidden_field_tag 'id', dinder.api.id %>
             <%= hidden_field_tag 'api_user_id', dinder.id %>  
@@ -24,9 +23,8 @@
         </div>
       </div>
     </div>
+    <br>
   <% end %>
-         <%# <span class="controls" id="decline_dinder"><i class="far fa-times-circle fa-5x"></i></span> %>
-        <%# <span class="controls" id="accept_dinder"><i class="fas fa-check-circle fa-5x"></i></span> %>
         
 <% else %>
 <div class="card card-shadow p-4">

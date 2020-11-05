@@ -3,7 +3,7 @@ class DindersController < ApplicationController
   def new
     # @restaurants = Restaurant.new
     @api = Api.new
-    @friends = User.all
+    @friends = current_user.friends
   end
 
   def index
@@ -28,7 +28,6 @@ class DindersController < ApplicationController
   def dinder
     @restaurant = Zomato.new(restaurant_params)
     restaurant = Zomato.new(params[:city])
-    # city_id = restaurant.get_city_id
     @food_photos = restaurant.get_food_images
     @restaurants = Zomato.new(params[:city]).get_nearby_restaurants
     json = @restaurants.to_json

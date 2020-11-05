@@ -3,14 +3,14 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="match_alert_title">You Have a Match with <%= @matches.last.sender.name %>!</h5>
+          <h1 class="modal-title" id="match_alert_title">You Have a Match with <%= @matches.last.sender.name %>!</h1>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <h1> <%= @matches.last.restaurant.name %></h1>
-          <p>Restaurant Image</p>
+          <%= image_tag(@food_photos.sample['urls']['thumb'], class: 'dinder_card_img_top')%>
           <p> <%=@matches.last.restaurant.address %> </p>
           <a><%= @matches.last.restaurant.site %></a>
         </div>

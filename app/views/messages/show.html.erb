@@ -7,5 +7,8 @@
   <h4 class = 'lead text-dark'><span style="color:#A8D0DB">Body: </span><br><br><%= @message.body %></h4>
   <br>
   <br>
-  <%= link_to 'Reply', new_message_path,  class:"btn btn-light text-white", style:"background-color:#FB6376; width:8%" %>
+  <%= form_tag '/messages/reply', method: :post do %>
+    <%= hidden_field_tag 'user_id', @message.sender.id %>
+    <%= submit_tag 'Reply', class:"btn btn-light text-white", style:"background-color:#FB6376; width:8%" %>
+  <% end %>
 </div>

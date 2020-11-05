@@ -200,7 +200,7 @@
       </select>
       <br>
       <h4 class="text-white display-4 d-inline">Friends</h4>
-      <% User.all.each do |friend| %>
+      <% @friends.each do |friend| %>
         <div class="inputGroup">
           <input id="user_ids<%= friend.id %>" name="user_ids[]" type="checkbox" value=<%= friend.id %>/>
           <label for="user_ids<%= friend.id %>"><%= friend.name %></label>
