@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   post 'messages/destroy', to: 'messages#destroy', as: 'destroy'
   post 'messages/reply', to: 'messages#reply', as: 'reply'
   post '/dinders/like', to: 'dinders#like', as: 'like'
-  get 'dinders/match', to: 'dinders#match', as: 'match'
+  get 'matches/match', to: 'matches#match', as: 'match'
 
 end

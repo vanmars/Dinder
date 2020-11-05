@@ -27,7 +27,7 @@
             <div class="dinder_card">
               <div>
                 <h1>No More!</h1>
-                <%= link_to image_tag("dinder_logo_ii.png", :border=>0), :action => 'match', :controller => 'dinders', :class => 'dock-item' %>
+                <%= link_to image_tag("dinder_logo_ii.png", :border=>0), :action => 'match', :controller => 'matches', :class => 'dock-item' %>
               </div>
             </div>
 
@@ -56,9 +56,13 @@
     <% end %>
 
   <% end%>
-    <div class="like_buttons fixed-bottom">
+    <div class="like_buttons fixed-bottom row">
+      <div class="col-6">
       <span id="decline_button"><i class="far fa-times-circle fa-5x controls" id="decline"></i></span>
+      </div>
+      <div class="col-6">
       <span id="like_button"><i class="fas fa-check-circle fa-5x controls" id="like"></i></span>
+      </div>
     </div>
   </div>
 <% end %>

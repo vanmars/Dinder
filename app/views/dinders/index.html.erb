@@ -4,19 +4,26 @@
 <% if @dinders.any? %>
     
   <% @dinders.each do |dinder| %>
-    <%= form_tag '/dinders/accept', method: :get do %>
-      <div class="card card-shadow p-4">
-        <p class="lead text-dark"><%= dinder.id%>  Sender: <%= dinder.api.sender.name %></p>
-        <p class="lead text-dark">Api Id: <%= link_to dinder.api.id , '/dinders/accept' %></p>
-        <%= hidden_field_tag 'id', dinder.api.id %>
-        <%= hidden_field_tag 'api_user_id', dinder.id %>  
-        <%= submit_tag 'accept', class: 'btn btn-success'%>
-    <% end %>
-    <%= form_tag '/dinders/reject', method: :get do %>
-      <%= hidden_field_tag 'api_user_id', dinder.id %>
-      <%= submit_tag 'decline', class: 'btn btn-danger'%>
-    <% end %>
+    <div class="card card-shadow p-4 accept_card">
+      <div class="row">
+        <div class="col" >
+          <p class="lead text-dark"><%= dinder.id%>  Sender: <%= dinder.api.sender.name %></p>
+          <p class="lead text-dark">Api Id: <%= link_to dinder.api.id , '/dinders/accept' %></p>
+        </div>
+        <div class="col" >
+          <%= form_tag '/dinders/accept', method: :get do %>    
+            <%= hidden_field_tag 'id', dinder.api.id %>
+            <%= hidden_field_tag 'api_user_id', dinder.id %>  
+            <%= submit_tag 'accept', class: 'btn btn-dark'%>
+          <% end %>
+
+          <%= form_tag '/dinders/reject', method: :get do %>
+            <%= hidden_field_tag 'api_user_id', dinder.id %>
+            <%= submit_tag 'decline', class: 'btn btn-outline-dark'%>
+          <% end %>
+        </div>
       </div>
+    </div>
   <% end %>
          <%# <span class="controls" id="decline_dinder"><i class="far fa-times-circle fa-5x"></i></span> %>
         <%# <span class="controls" id="accept_dinder"><i class="fas fa-check-circle fa-5x"></i></span> %>
