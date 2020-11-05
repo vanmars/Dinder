@@ -2,7 +2,7 @@
 
 <%= form_for @message do |f| %>
   <%= f.text_area :body %>
-  <%= hidden_field_tag 'message[user_ids][]', @recipient.id %>%>
+  <%= hidden_field_tag 'user_ids[]', @recipient.id %>%>
 
 
   <%= f.submit %>

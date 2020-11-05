@@ -48,9 +48,13 @@ class DindersController < ApplicationController
       else
         restaurant = Restaurant.create(name: params[:name], address: params[:address], site: params[:site], zomato_id: params[:zomato_id].to_i)
       end
-      winder = @user.winders.create(api_id: @api.id)
+      if Winder.find_by_ids(params[:api_id], @user.id).any?
+        winder = Winder.find_by_ids(params[:api_id], @user.id).last
+      else
+        winder = @user.winders.create(api_id: @api.id)
+      end
       winder.restaurants << restaurant
-binding.pry
+
       if params[:dinder] = 'reciever'
         puts params[:dinder]
         sender = @api.sender
@@ -60,6 +64,9 @@ binding.pry
         if common_restaurants.any?
           result = common_restaurants.last
           puts "you have both matched on #{result.name}"
+          @message = Message.create(:sender_id => sender.id, :body => "you and #{sender.name} have both matched on #{result.name}", :user_ids => [current_user.id])
+          Message.create(:sender_id => current_user.id, :body => "you and #{current_user.name} have both matched on #{result.name}", :user_ids => [sender.id])
+          result = []
         end
       end
         
